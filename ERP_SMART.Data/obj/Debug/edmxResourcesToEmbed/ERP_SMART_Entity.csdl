@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERP_SMARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Sys_Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Guid" Nullable="false" />
+    <Property Name="CompanyParentId" Type="Guid" Nullable="false" />
+    <Property Name="CompanyCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="TableofContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUser" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUser" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Sys_Role" Relationship="Self.FK_Sys_Role_Sys_Company_CompanyId" FromRole="Sys_Company" ToRole="Sys_Role" />
+  </EntityType>
+  <EntityType Name="Sys_Function">
+    <Key>
+      <PropertyRef Name="FunctionId" />
+    </Key>
+    <Property Name="FunctionId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleId" Type="Guid" Nullable="false" />
+    <Property Name="FunctionCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FunctionName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="true" Unicode="true" />
+    <Property Name="Collacation" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Sys_Module" Relationship="Self.FK_Sys_Function_Sys_Module_ModuleId" FromRole="Sys_Function" ToRole="Sys_Module" />
+    <NavigationProperty Name="Sys_Role_Module_Function" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Function_FunctionId" FromRole="Sys_Function" ToRole="Sys_Role_Module_Function" />
+  </EntityType>
+  <EntityType Name="Sys_Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleId" Type="Guid" Nullable="false" />
+    <Property Name="MenuCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Collocation" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUser" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUser" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Sys_Module" Relationship="Self.FK_Sys_Menu_Sys_Module_ModuleId" FromRole="Sys_Menu" ToRole="Sys_Module" />
+  </EntityType>
+  <EntityType Name="Sys_Module">
+    <Key>
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="ModuleId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Collocation" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Sys_Function" Relationship="Self.FK_Sys_Function_Sys_Module_ModuleId" FromRole="Sys_Module" ToRole="Sys_Function" />
+    <NavigationProperty Name="Sys_Menu" Relationship="Self.FK_Sys_Menu_Sys_Module_ModuleId" FromRole="Sys_Module" ToRole="Sys_Menu" />
+    <NavigationProperty Name="Sys_Role_Module_Function" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Module_ModuleId" FromRole="Sys_Module" ToRole="Sys_Role_Module_Function" />
+  </EntityType>
+  <EntityType Name="Sys_Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationParentId" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrganizationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="TableofContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Sys_Role" Relationship="Self.FK_Sys_Role_Sys_Organization_OrganizationId" FromRole="Sys_Organization" ToRole="Sys_Role" />
+  </EntityType>
+  <EntityType Name="Sys_Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="CompanyId" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationId" Type="Guid" Nullable="false" />
+    <Property Name="RoleCode" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Collocation" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUser" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUser" Type="Guid" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Sys_Company" Relationship="Self.FK_Sys_Role_Sys_Company_CompanyId" FromRole="Sys_Role" ToRole="Sys_Company" />
+    <NavigationProperty Name="Sys_Organization" Relationship="Self.FK_Sys_Role_Sys_Organization_OrganizationId" FromRole="Sys_Role" ToRole="Sys_Organization" />
+    <NavigationProperty Name="Sys_Role_Module_Function" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Role_RoleId" FromRole="Sys_Role" ToRole="Sys_Role_Module_Function" />
+  </EntityType>
+  <EntityType Name="Sys_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientId" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Sys_Role_Module_Function">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="ModuleId" Type="Guid" Nullable="false" />
+    <Property Name="FunctionId" Type="Guid" />
+    <NavigationProperty Name="Sys_Function" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Function_FunctionId" FromRole="Sys_Role_Module_Function" ToRole="Sys_Function" />
+    <NavigationProperty Name="Sys_Module" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Module_ModuleId" FromRole="Sys_Role_Module_Function" ToRole="Sys_Module" />
+    <NavigationProperty Name="Sys_Role" Relationship="Self.FK_Sys_Role_Module_Function_Sys_Role_RoleId" FromRole="Sys_Role_Module_Function" ToRole="Sys_Role" />
+  </EntityType>
+  <Association Name="FK_Sys_Role_Sys_Company_CompanyId">
+    <End Role="Sys_Company" Type="Self.Sys_Company" Multiplicity="1" />
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Sys_Role">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Function_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Function" Type="Self.Sys_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Function">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Function_FunctionId">
+    <End Role="Sys_Function" Type="Self.Sys_Function" Multiplicity="0..1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Function">
+        <PropertyRef Name="FunctionId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="FunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Menu_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Menu" Type="Self.Sys_Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Menu">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Sys_Organization_OrganizationId">
+    <End Role="Sys_Organization" Type="Self.Sys_Organization" Multiplicity="1" />
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Sys_Role">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Role_RoleId">
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ERP_SMARTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sys_Company" EntityType="Self.Sys_Company" />
+    <EntitySet Name="Sys_Function" EntityType="Self.Sys_Function" />
+    <EntitySet Name="Sys_Menu" EntityType="Self.Sys_Menu" />
+    <EntitySet Name="Sys_Module" EntityType="Self.Sys_Module" />
+    <EntitySet Name="Sys_Organization" EntityType="Self.Sys_Organization" />
+    <EntitySet Name="Sys_Role" EntityType="Self.Sys_Role" />
+    <EntitySet Name="Sys_User" EntityType="Self.Sys_User" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Sys_Role_Module_Function" EntityType="Self.Sys_Role_Module_Function" />
+    <AssociationSet Name="FK_Sys_Role_Sys_Company_CompanyId" Association="Self.FK_Sys_Role_Sys_Company_CompanyId">
+      <End Role="Sys_Company" EntitySet="Sys_Company" />
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Function_Sys_Module_ModuleId" Association="Self.FK_Sys_Function_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Function" EntitySet="Sys_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Function_FunctionId" Association="Self.FK_Sys_Role_Module_Function_Sys_Function_FunctionId">
+      <End Role="Sys_Function" EntitySet="Sys_Function" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Menu_Sys_Module_ModuleId" Association="Self.FK_Sys_Menu_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Menu" EntitySet="Sys_Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Module_ModuleId" Association="Self.FK_Sys_Role_Module_Function_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Sys_Organization_OrganizationId" Association="Self.FK_Sys_Role_Sys_Organization_OrganizationId">
+      <End Role="Sys_Organization" EntitySet="Sys_Organization" />
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Role_RoleId" Association="Self.FK_Sys_Role_Module_Function_Sys_Role_RoleId">
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

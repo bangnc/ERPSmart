@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERP_SMARTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Sys_Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyParentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="512" />
+    <Property Name="TableofContents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sys_Function">
+    <Key>
+      <PropertyRef Name="FunctionId" />
+    </Key>
+    <Property Name="FunctionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModuleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FunctionCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="FunctionName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="512" />
+    <Property Name="Collacation" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sys_Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModuleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MenuCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+    <Property Name="Collocation" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sys_Module">
+    <Key>
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="ModuleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModuleCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="Collocation" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="512" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sys_Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationParentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="512" />
+    <Property Name="TableofContents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sys_Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleCode" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Collocation" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="512" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ERP_SMART.dbo.Sys_Role_Module_Function' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Sys_Role_Module_Function">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="ModuleId" />
+    </Key>
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModuleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FunctionId" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ERP_SMART.dbo.Sys_Role_Module_Menu' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sys_Role_Module_Menu">
+          <Property Name="RoleId" Type="uniqueidentifier" />
+          <Property Name="ModuleId" Type="uniqueidentifier" />
+          <Property Name="MenuId" Type="uniqueidentifier" />
+        </EntityType>-->
+  <EntityType Name="Sys_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="125" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="125" />
+    <Property Name="Password" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="nchar" MaxLength="20" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="512" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="UpdateDate" Type="date" Nullable="false" />
+    <Property Name="CreateUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ERP_SMART.dbo.Sys_User_Company_Organization' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sys_User_Company_Organization">
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CompanyId" Type="uniqueidentifier" />
+          <Property Name="OrganizationId" Type="uniqueidentifier" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Sys_Function_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Function" Type="Self.Sys_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Function">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Menu_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Menu" Type="Self.Sys_Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Menu">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Function_FunctionId">
+    <End Role="Sys_Function" Type="Self.Sys_Function" Multiplicity="0..1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Function">
+        <PropertyRef Name="FunctionId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="FunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Module_ModuleId">
+    <End Role="Sys_Module" Type="Self.Sys_Module" Multiplicity="1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Module">
+        <PropertyRef Name="ModuleId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Module_Function_Sys_Role_RoleId">
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="1" />
+    <End Role="Sys_Role_Module_Function" Type="Self.Sys_Role_Module_Function" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Sys_Role_Module_Function">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_Role_Module_Menu' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_Role_Module_Menu_Sys_Menu_MenuId" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_Role_Module_Menu' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_Role_Module_Menu_Sys_Module_ModuleId" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_Role_Module_Menu' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_Role_Module_Menu_Sys_Role_RoleId" />-->
+  <Association Name="FK_Sys_Role_Sys_Company_CompanyId">
+    <End Role="Sys_Company" Type="Self.Sys_Company" Multiplicity="1" />
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Sys_Role">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sys_Role_Sys_Organization_OrganizationId">
+    <End Role="Sys_Organization" Type="Self.Sys_Organization" Multiplicity="1" />
+    <End Role="Sys_Role" Type="Self.Sys_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sys_Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Sys_Role">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_User_Company_Organization' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_User_Company_Organization_Sys_Company_CompanyId" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_User_Company_Organization' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_User_Company_Organization_Sys_Organization_OrganizationId" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'ERP_SMART.dbo.Sys_User_Company_Organization' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Sys_User_Company_Organization_Sys_User_UserId" />-->
+  <EntityContainer Name="ERP_SMARTModelStoreContainer">
+    <EntitySet Name="Sys_Company" EntityType="Self.Sys_Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Function" EntityType="Self.Sys_Function" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Menu" EntityType="Self.Sys_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Module" EntityType="Self.Sys_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Organization" EntityType="Self.Sys_Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Role" EntityType="Self.Sys_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_User" EntityType="Self.Sys_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_Role_Module_Function" EntityType="Self.Sys_Role_Module_Function" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Sys_Role_Module_Function].[RoleId] AS [RoleId], 
+    [Sys_Role_Module_Function].[ModuleId] AS [ModuleId], 
+    [Sys_Role_Module_Function].[FunctionId] AS [FunctionId]
+    FROM [dbo].[Sys_Role_Module_Function] AS [Sys_Role_Module_Function]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Sys_Function_Sys_Module_ModuleId" Association="Self.FK_Sys_Function_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Function" EntitySet="Sys_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Menu_Sys_Module_ModuleId" Association="Self.FK_Sys_Menu_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Menu" EntitySet="Sys_Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Function_FunctionId" Association="Self.FK_Sys_Role_Module_Function_Sys_Function_FunctionId">
+      <End Role="Sys_Function" EntitySet="Sys_Function" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Module_ModuleId" Association="Self.FK_Sys_Role_Module_Function_Sys_Module_ModuleId">
+      <End Role="Sys_Module" EntitySet="Sys_Module" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Module_Function_Sys_Role_RoleId" Association="Self.FK_Sys_Role_Module_Function_Sys_Role_RoleId">
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+      <End Role="Sys_Role_Module_Function" EntitySet="Sys_Role_Module_Function" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Sys_Company_CompanyId" Association="Self.FK_Sys_Role_Sys_Company_CompanyId">
+      <End Role="Sys_Company" EntitySet="Sys_Company" />
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sys_Role_Sys_Organization_OrganizationId" Association="Self.FK_Sys_Role_Sys_Organization_OrganizationId">
+      <End Role="Sys_Organization" EntitySet="Sys_Organization" />
+      <End Role="Sys_Role" EntitySet="Sys_Role" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

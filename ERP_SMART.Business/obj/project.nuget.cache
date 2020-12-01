@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Pp28f9y1b2RFcVKlAtuh9JKS6mSPRBE0d4eXERpZv1suJMidkruOxSzStUnpK0wYuFWoxmAmiwfrTPqaUr/khA==",
+  "success": true,
+  "projectFilePath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BangNC\\.nuget\\packages\\entityframework\\6.1.2\\entityframework.6.1.2.nupkg.sha512",
+    "C:\\Users\\BangNC\\.nuget\\packages\\fissoft.entityframework.fts\\1.0.80\\fissoft.entityframework.fts.1.0.80.nupkg.sha512",
+    "C:\\Users\\BangNC\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\BangNC\\.nuget\\packages\\unity\\5.11.9\\unity.5.11.9.nupkg.sha512"
+  ],
+  "logs": []
+}

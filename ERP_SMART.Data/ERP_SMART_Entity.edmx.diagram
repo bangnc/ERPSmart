@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba2f4e3481e94b6599044894e059ad80" Name="Diagram1">
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Company" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Function" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Menu" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Module" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Organization" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Role" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_User" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_SMARTModel.Sys_Role_Module_Function" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Role_Sys_Company_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Function_Sys_Module_ModuleId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Role_Module_Function_Sys_Function_FunctionId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Menu_Sys_Module_ModuleId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Role_Module_Function_Sys_Module_ModuleId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Role_Sys_Organization_OrganizationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_SMARTModel.FK_Sys_Role_Module_Function_Sys_Role_RoleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

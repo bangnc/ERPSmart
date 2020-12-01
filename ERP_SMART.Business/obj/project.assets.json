@@ -1,0 +1,437 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "EntityFramework/6.1.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "Fissoft.EntityFramework.Fts/1.0.80": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.1.2"
+        },
+        "compile": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "Unity/5.11.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
+        "compile": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "ERP_SMART.Data/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "EntityFramework/6.1.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "Fissoft.EntityFramework.Fts/1.0.80": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.1.2"
+        },
+        "compile": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "Unity/5.11.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
+        "compile": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "ERP_SMART.Data/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "EntityFramework/6.1.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "Fissoft.EntityFramework.Fts/1.0.80": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.1.2"
+        },
+        "compile": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "Unity/5.11.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
+        "compile": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "ERP_SMART.Data/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "EntityFramework/6.1.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "Fissoft.EntityFramework.Fts/1.0.80": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.1.2"
+        },
+        "compile": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Fissoft.EntityFramework.Fts.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "Unity/5.11.9": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
+        "compile": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Unity.Abstractions.dll": {},
+          "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "ERP_SMART.Data/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ERP_SMART.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EntityFramework/6.1.2": {
+      "sha512": "tMYDJsgf19mFkwu1Dp3e681IggYcnuLJrj+OoQtYJ7L8lOD0OprBRyLy9sTTY4leJ2216HU3yFQucEPPKd1BGw==",
+      "type": "package",
+      "path": "entityframework/6.1.2",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/App.config.transform",
+        "content/Web.config.transform",
+        "entityframework.6.1.2.nupkg.sha512",
+        "entityframework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
+    "Fissoft.EntityFramework.Fts/1.0.80": {
+      "sha512": "EwVBu7mfuT+WpL5M58+9ukEgfgrZ4VZeSKL3mODv6FNcdCT8g6CJr/w4GnQQ6beMs9ymra1MaSOICDdg7Ik7yw==",
+      "type": "package",
+      "path": "fissoft.entityframework.fts/1.0.80",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fissoft.entityframework.fts.1.0.80.nupkg.sha512",
+        "fissoft.entityframework.fts.nuspec",
+        "lib/net45/Fissoft.EntityFramework.Fts.dll"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Unity/5.11.9": {
+      "sha512": "2bGJwQ4FSKQiuDd2riU8Ul2792v60DroVmsJLpuwlTCQq54P3sAwKlqLjQkPP/LRxL6m6CgxNOh485XEEW7ajg==",
+      "type": "package",
+      "path": "unity/5.11.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Unity.Abstractions.dll",
+        "lib/net40/Unity.Abstractions.pdb",
+        "lib/net40/Unity.Container.dll",
+        "lib/net40/Unity.Container.pdb",
+        "lib/net45/Unity.Abstractions.dll",
+        "lib/net45/Unity.Abstractions.pdb",
+        "lib/net45/Unity.Container.dll",
+        "lib/net45/Unity.Container.pdb",
+        "lib/net46/Unity.Abstractions.dll",
+        "lib/net46/Unity.Abstractions.pdb",
+        "lib/net46/Unity.Container.dll",
+        "lib/net46/Unity.Container.pdb",
+        "lib/net47/Unity.Abstractions.dll",
+        "lib/net47/Unity.Abstractions.pdb",
+        "lib/net47/Unity.Container.dll",
+        "lib/net47/Unity.Container.pdb",
+        "lib/net48/Unity.Abstractions.dll",
+        "lib/net48/Unity.Abstractions.pdb",
+        "lib/net48/Unity.Container.dll",
+        "lib/net48/Unity.Container.pdb",
+        "lib/netcoreapp1.0/Unity.Abstractions.dll",
+        "lib/netcoreapp1.0/Unity.Abstractions.pdb",
+        "lib/netcoreapp1.0/Unity.Container.dll",
+        "lib/netcoreapp1.0/Unity.Container.pdb",
+        "lib/netcoreapp2.0/Unity.Abstractions.dll",
+        "lib/netcoreapp2.0/Unity.Abstractions.pdb",
+        "lib/netcoreapp2.0/Unity.Container.dll",
+        "lib/netcoreapp2.0/Unity.Container.pdb",
+        "lib/netcoreapp3.0/Unity.Abstractions.dll",
+        "lib/netcoreapp3.0/Unity.Abstractions.pdb",
+        "lib/netcoreapp3.0/Unity.Container.dll",
+        "lib/netcoreapp3.0/Unity.Container.pdb",
+        "lib/netstandard1.0/Unity.Abstractions.dll",
+        "lib/netstandard1.0/Unity.Abstractions.pdb",
+        "lib/netstandard1.0/Unity.Container.dll",
+        "lib/netstandard1.0/Unity.Container.pdb",
+        "lib/netstandard2.0/Unity.Abstractions.dll",
+        "lib/netstandard2.0/Unity.Abstractions.pdb",
+        "lib/netstandard2.0/Unity.Container.dll",
+        "lib/netstandard2.0/Unity.Container.pdb",
+        "unity.5.11.9.nupkg.sha512",
+        "unity.nuspec"
+      ]
+    },
+    "ERP_SMART.Data/1.0.0": {
+      "type": "project",
+      "path": "../ERP_SMART.Data/ERP_SMART.Data.csproj",
+      "msbuildProject": "../ERP_SMART.Data/ERP_SMART.Data.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "ERP_SMART.Data >= 1.0.0",
+      "Fissoft.EntityFramework.Fts >= 1.0.80",
+      "Unity >= 5.11.9"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\BangNC\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+      "projectName": "ERP_SMART.Business",
+      "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+      "packagesPath": "C:\\Users\\BangNC\\.nuget\\packages\\",
+      "outputPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\BangNC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj": {
+              "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "Fissoft.EntityFramework.Fts": {
+            "target": "Package",
+            "version": "[1.0.80, )"
+          },
+          "Unity": {
+            "target": "Package",
+            "version": "[5.11.9, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

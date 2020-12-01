@@ -1,0 +1,75 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj": {}
+  },
+  "projects": {
+    "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+        "projectName": "ERP_SMART.Business",
+        "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+        "packagesPath": "C:\\Users\\BangNC\\.nuget\\packages\\",
+        "outputPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\BangNC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj": {
+                "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Fissoft.EntityFramework.Fts": {
+              "target": "Package",
+              "version": "[1.0.80, )"
+            },
+            "Unity": {
+              "target": "Package",
+              "version": "[5.11.9, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj",
+        "projectName": "ERP_SMART.Data",
+        "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

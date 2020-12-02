@@ -20,7 +20,7 @@ namespace ERP_SMART.API.Controllers
             userService = MyUnity.GetService<ISystemUserService>();
         }
 
-        // POST api/Account/Register
+        // POST api/Account/Register; Sử dụng git
         [AllowAnonymous]
         [Route("Register")]
         public HttpResponseMessage Register(SystemUserDTO obj)

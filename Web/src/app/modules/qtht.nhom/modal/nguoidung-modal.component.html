@@ -1,0 +1,73 @@
+<div class="modal-content">
+        <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold ">DANH SÁCH NGƯỜI DÙNG</h4>
+            <button type="button" class="close" data-dismiss="modal" container="body" ngbTooltip="Đóng" aria-label="Close" (click)="activeModal.close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row m-2" style="padding: 16px;">
+            <div class="col-md-4">
+                <app-input name="ten" [autofocus]="true" type="text" title="Tên" [(ngModel)]="pageOption.filter.ten"></app-input>
+            </div>
+            <div class="col-md-4 div_search_item" *ngIf="!isNhomHDTDKT">
+                <app-input name="to_chuc_id" type="select-server" title="Hội quản lý" [(ngModel)]="pageOption.filter.to_chuc_id"  
+                    [options]="{value:'id', label:'ten', apiUrl:urlToChuc,sort:{ten_day_du:1}, filter: {}, sort: {ma: 1}}" [readModeData]="pageOption.filter.to_chuc"
+                    (ngModelChange)="changeToChucHoi()">   
+                </app-input>
+            </div>
+            <div class="col-md-4">
+                <app-input name="phong_ban_su_dung_id" id="phong_ban_su_dung_id" type="select-server"
+                    title="Phòng ban, đơn vị sử dụng" [(ngModel)]="pageOption.filter.phong_ban_id"
+                    [readModeData]="pageOption.filter.phong_ban_su_dung" 
+                    [options]="optionPBCapDuoi">
+                </app-input>
+            </div>
+        </div>
+
+        <div class="row m-2 text-right" style="float: right; padding: 0 25px; display: initial; margin: 0 8px!important;">
+            <button mdbWavesEffect class="btn btn-sm btn-primary" (click)="search()" style="float: right!important;">
+                <i class="mdi mdi-account-search"></i> Tìm kiếm
+            </button>
+            <button mdbWavesEffect class="btn btn-sm btn-danger" (click)="clearSearch()" style="float: right!important;">
+                <i class="mdi mdi-filter-remove"></i> Xóa tìm kiếm
+            </button>
+        </div>
+        <div class="modal-body mx-3">
+            <app-table keyExtractor="id" 
+                idCheckBox="check-all-list-modal-user" 
+                [data]="dataNguoiDung" 
+                [meta]="meta"
+                [pageOption]="pageOption"
+                (emitChange)="papeOptionChange($event)" 
+                [hasActionBar]="true"
+                style="min-height: 50vh;"
+                [loading]="loading">
+                <ng-template app-page-actions let-itemSelected >
+                    <button style="display:none" mdbWavesEffect class="btn btn-sm btn-primary" (click)="selectCanBo(itemSelected)" #btnSelect>
+                        <i class="mdi mdi-plus"></i>
+                        Chọn
+                    </button>
+                </ng-template>
+                <app-page-column title="STT" width="60px">
+                    <ng-template col-body let-index=index>{{index+idex}}</ng-template>
+                </app-page-column>
+                <app-page-column title="Tên" width="35%" orderby='ten'>
+                    <ng-template col-body let-item>{{item.ten}}</ng-template>
+                </app-page-column>
+                <app-page-column title="Hội">
+                    <ng-template col-body let-item>{{item.to_chuc != null ? item.to_chuc.ten : ''}}</ng-template>
+                </app-page-column>
+            </app-table>
+        </div>
+        <div class="modal-footer d-flex justify-content-right">
+            <button mdbWavesEffect class="btn btn-sm btn-primary" (click)="clickBtnSelect()">
+                <i class="mdi mdi-plus"></i>
+                Chọn
+            </button>
+            <button mdbWavesEffect class="btn btn-sm btn-danger" (click)="activeModal.close()">
+                <i class="mdi mdi-delete-outline"></i>
+                Hủy
+            </button>
+    
+        </div>
+    </div>

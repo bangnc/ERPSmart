@@ -1,0 +1,23 @@
+<app-page-form [noSubHeader]=true pageTitle="TẠO TÀI KHOẢN NGƯỜI DÙNG" (emitNavigateBack)="navigateBack($event)"
+    [loading]="loading">
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <app-input required name="pass" type="text" title="Mật khẩu (*)" [(ngModel)]="pass"
+                        [validationMessages]="validationMessages.pass"></app-input>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-12" style="text-align: center">
+                    <button [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary"
+                        (click)="creates(pass)">
+                        <i class="mdi mdi-content-save"></i>
+                        Tạo tài khoản
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </ng-container>
+</app-page-form>

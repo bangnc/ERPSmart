@@ -1,0 +1,15 @@
+<svg:defs>
+    <svg:marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 20 20">
+        <svg:path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </svg:marker>
+    <svg:filter x="0" y="0" width="1" height="1" id="solid">
+        <svg:feFlood flood-color="white" />
+        <svg:feComposite in="SourceGraphic" />
+    </svg:filter>
+</svg:defs>
+<svg:path class="arrow-path" [attr.d]="getPoints()" (click)="onArrowClick()" marker-end="url(#arrow)" />
+<!-- <svg:g stroke="black" stroke-width="3" fill="black">
+    <svg:circle id="pointA" [attr.cx]="positionLable.x" [attr.cy]="positionLable.y" r="3" stroke="black"/>
+</svg:g> -->
+
+<svg:text class="arrow-text" (click)="onArrowClick()" [attr.x]="positionLable.x" [attr.y]="positionLable.y" fill="#4285f4">{{name}}</svg:text>

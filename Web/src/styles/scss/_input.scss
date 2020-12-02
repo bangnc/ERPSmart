@@ -1,0 +1,250 @@
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #fff !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+app-input {
+    display: block;
+
+    &.md-form {
+        margin-top: .9rem;
+        margin-bottom: .9rem;
+
+        input[type=text]+label,
+        input[type=password]+label,
+        input[type=email]+label,
+        input[type=url]+label,
+        input[type=time]+label,
+        input[type=date]+label,
+        input[type=datetime-local]+label,
+        input[type=tel]+label,
+        input[type=number]+label,
+        input[type=search-md]+label,
+        input[type=search]+label,
+        textarea.md-textarea+label {
+            font-size: $app-font-size;
+            color: black;
+
+            &:after {
+                top: 1.8rem;
+                font-size: 11px;
+            }
+
+            &.active::after {
+                top: 2rem;
+                transform: translateY(120%);
+            }
+        }
+
+        .form-control {
+            padding: 0.4rem 0;
+            // padding: .3rem 0 .55rem 0;
+            font-size: $app-font-size;
+            color: black;
+        }
+
+        // .prefix{
+        //     font-size: 1.25rem;
+        // }
+        .input-group {
+            input {
+                padding: 0.3rem 0 0.55rem 0;
+            }
+
+            .prefix~input {
+                width: 1%;
+            }
+        }
+
+        .prefix~p.form-control {
+            margin-left: 2.5rem;
+            width: calc(100% - 2.5rem);
+        }
+
+        p.form-control {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            border-bottom: 1px solid #ced4da;
+            border-radius: 0;
+            box-sizing: content-box;
+            background-color: transparent;
+            height: 24px;
+        }
+
+        .prefix~.input-group-warp {
+            margin-left: 2.5rem;
+        }
+
+        input:-webkit-autofill~label {
+            color: black;
+            transform: translateY(-120%);
+            -webkit-transform: translateY(-120%);
+            font-size: $app-font-size;
+        }
+
+        input~label {
+            color: black;
+            font-size: $app-font-size;
+
+            &.active {
+                color: black;
+            }
+        }
+
+        label.active {
+            color: black;
+        }
+
+        .inputVal {
+            font-style: italic;
+            font-size: .7rem;
+        }
+
+        &[required] {
+            input~label:not(.custom-control-label) {
+                color: #ff3547;
+            }
+
+            textarea~label:not(.custom-control-label) {
+                color: #ff3547;
+            }
+
+            label.active {
+                color: #ff3547 !important;
+            }
+        }
+
+        &[theme='bootstrap'] {
+            margin: 0;
+
+            p.form-control {
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+            input.form-control,textarea.form-control,.counter-success{
+                padding: 6px;
+                margin: 0;
+                border-bottom: 1px solid #d2d6de !important;
+                border: 1px solid #d2d6de !important;
+                box-sizing: border-box;
+                box-shadow: none !important;
+                &:focus{
+                    border-color: #3c8dbc;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .input-group-warp {
+        margin-top: 0.65rem;
+        display: inline-block;
+    }
+
+    .custom-checkbox .custom-control-input:disabled:checked~.custom-control-label::before {
+        background-color: #007bff;
+    }
+
+    .custom-control-input:disabled~.custom-control-label {
+        color: black;
+    }
+
+    .custom-control {
+        .custom-control-label {
+            cursor: pointer;
+            top: 0;
+        }
+    }
+
+    .ng-select .ng-has-value .ng-placeholder,
+    .ng-select.ng-select-opened .ng-placeholder {
+        transform: translateY(-120%);
+        -webkit-transform: translateY(-120%);
+    }
+    .ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+        white-space: initial;
+    }
+    .ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
+        white-space: initial;
+        line-height: 1.5;
+        display: flex;
+        padding: 4px 16px;
+        align-items: center;
+    }
+
+}
+
+ngb-datepicker {
+    .ngb-dp-header {
+        padding-top: 0.5rem;
+    }
+
+    .bg-light {
+        background-color: #4285f4 !important;
+
+        .ngb-dp-weekday {
+            color: white;
+        }
+
+        .ngb-dp-navigation-chevron {
+            color: white;
+        }
+
+        .ngb-dp-arrow-btn {
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .ngb-dp-day {
+        margin: 2px;
+
+        &:focus {
+            outline: none;
+        }
+
+        .btn-light {
+            background-color: transparent !important;
+            border-color: #f8f9fa;
+            border-radius: 50%;
+
+            &:hover {
+                background-color: #e2e6ea !important;
+                border-color: #dae0e5;
+            }
+
+            &:not([disabled]):not(.disabled).active {
+                //background-color: #dae0e5 !important;
+                background-color: #4285f4 !important;
+                box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            }
+
+            &.bg-primary {
+                background-color: #4285f4 !important;
+                box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            }
+
+            &.text-white {
+                color: #fff !important;
+            }
+        }
+
+        &[tabindex="0"] {
+            .btn-light {
+                background-color: #4285f4 !important;
+                box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+                color: #fff !important;
+            }
+        }
+
+    }
+
+}

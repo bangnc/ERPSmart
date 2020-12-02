@@ -1,0 +1,24 @@
+@import "~angular-bootstrap-md/scss/core/colors";
+@import "../../../../styles/scss/variables";
+:host {
+    .pagination {
+        margin: 0;
+        input {
+            padding: 0;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            transition: all .3s linear;            
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            border-radius: 50%;
+            font-size: $app-font-size;
+        }
+        .page-item{
+            padding: 0px 5px;
+            .page-link{
+                border-radius: 50%;
+                font-size: $app-font-size;
+            }
+        }        
+    }
+}

@@ -1,0 +1,47 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~angular-bootstrap-md/scss/core/colors";
+$card-bg: #ffffff;
+
+:host{
+    .card{
+        box-shadow: none;
+    }
+    .card-profile {
+        width: 100%;
+
+    }
+    .card-img-top {
+        border-radius: 0;
+        height: 100px;
+        }
+    .card-img-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: -80px;
+    // margin-bottom: 35px;
+    border: 5px solid $card-bg;
+    }
+    ::ng-deep {
+        .file-path-wrapper{
+            display: none;
+        }
+        .file-field{
+            margin-top: -1.6em;
+            margin-left: 46%;
+        }
+        .mdi.mdi-camera-party-mode.prefix{
+            display: none;
+        }
+        .toChucSty{
+            p{
+                font-weight: bold;
+            }
+        }
+    }
+
+
+}
+

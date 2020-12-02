@@ -1,0 +1,224 @@
+$color-it-0:#4285F4;
+$color-it-1:#00C851;
+$color-it-2:#FF8800;
+$color-it-3:#007E33;
+$color-it-4:#ffd600;
+$color-it-5:#33b5e5;
+$color-it-6:#aa66cc;
+$color-it-7:#ff80ab;
+$color-it-8:#ff4444;
+:host {
+    .app-list {
+        .app-item {
+            min-height: 90px;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            .app-icon {
+                border-radius: 50%;
+                background: #4285f4;
+                width: 34px;
+                height: 34px;
+                display: flex;
+                justify-content: center;
+                margin: 8px;
+                i {
+                    font-size: 24px;
+                    color: #fff;
+                }
+            }
+            .app-title {
+                text-align: center;
+                color: #000;
+                font-size: .8rem;
+            }
+            &:hover {
+                border: 1px solid #4285f4;
+            }
+        }
+    }
+    .content {
+        background: #f4f4f4;
+    }
+    ul.list-app-group {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        li.list-app-group-item {
+            padding: 5px 0px;
+            .pl-2 {
+                align-items: center;
+                min-height: 35px;
+                a {
+                    padding: 0px 10px;
+                    color: #4285F4;
+                    display: inline-flex;
+                    align-items: center;
+                }
+            }
+            ul.list-app {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                padding-left: 0;
+                margin-bottom: 0;
+                border: solid rgba(0, 0, 0, .125);
+                border-width: 1px 0px 1px 0px;
+                li.list-app-item {
+                    background: #fff;
+                    .app-item-warp {
+                        display: flex;
+                        .app-icon {
+                            padding: .3rem .6rem;
+                            .app-icon-warp {
+                                width: 30px;
+                                height: 30px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 50%;
+                            }
+                            i {
+                                font-size: 1.2rem;
+                            }
+                        }
+                        .app-title {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            color: #000;
+                        }
+                        &.it-0 {
+                            .app-icon-warp {
+                                background-color: $color-it-0;
+                            }
+                        }
+                        &.it-1 {
+                            .app-icon-warp {
+                                background-color: $color-it-1;
+                            }
+                        }
+                        &.it-2 {
+                            .app-icon-warp {
+                                background-color: $color-it-2;
+                            }
+                        }
+                        &.it-3 {
+                            .app-icon-warp {
+                                background-color: $color-it-3;
+                            }
+                        }
+                        &.it-4 {
+                            .app-icon-warp {
+                                background-color: $color-it-4;
+                            }
+                        }
+                        &.it-5 {
+                            .app-icon-warp {
+                                background-color: $color-it-5;
+                            }
+                        }
+                        &.it-6 {
+                            .app-icon-warp {
+                                background-color: $color-it-6;
+                            }
+                        }
+                        &.it-7 {
+                            .app-icon-warp {
+                                background-color: $color-it-7;
+                            }
+                        }
+                        &.it-8 {
+                            .app-icon-warp {
+                                background-color: $color-it-8;
+                            }
+                        }
+                    }
+                    &.spectator {
+                        background: transparent;
+                        .app-item-warp {
+                            cursor: inherit;
+                            .app-icon {
+                                display: none;
+                            }
+                            .app-title {
+                                min-height: 35px;
+                                padding-left: 8px;
+                                font-size: 1rem;
+                                font-weight: 300;
+                            }
+                        }
+                        &~.list-app-item {
+                            .app-icon {
+                                border-top: 1px solid rgba(0, 0, 0, .125);
+                            }
+                        }
+                    }
+                    &:not(:first-child) {
+                        .app-item-warp {
+                            .app-title {
+                                border-top: 1px solid rgba(0, 0, 0, .125);
+                            }
+                        }
+                    }
+                    &:hover:not(.spectator) {
+                        .app-item-warp {
+                            .app-icon {
+                                .app-icon-warp {
+                                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                                }
+                            }
+                            &.it-0 {
+                                .app-title {
+                                    color: $color-it-0;
+                                }
+                            }
+                            &.it-1 {
+                                .app-title {
+                                    color: $color-it-1;
+                                }
+                            }
+                            &.it-2 {
+                                .app-title {
+                                    color: $color-it-2;
+                                }
+                            }
+                            &.it-3 {
+                                .app-title {
+                                    color: $color-it-3;
+                                }
+                            }
+                            &.it-4 {
+                                .app-title {
+                                    color: $color-it-4;
+                                }
+                            }
+                            &.it-5 {
+                                .app-title {
+                                    color: $color-it-5;
+                                }
+                            }
+                            &.it-6 {
+                                .app-title {
+                                    color: $color-it-6;
+                                }
+                            }
+                            &.it-7 {
+                                .app-title {
+                                    color: $color-it-7;
+                                }
+                            }
+                            &.it-8 {
+                                .app-title {
+                                    color: $color-it-8;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

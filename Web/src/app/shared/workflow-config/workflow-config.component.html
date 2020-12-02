@@ -1,0 +1,44 @@
+<div class="wfl-action-bar info-color z-depth-1">
+    <span class="zoom-size">zoom: {{zoomSize}}%</span>
+        <ul class="nav nav-actions">
+            <li class="action-icon nav-item" container="body" ngbTooltip="Thu nhỏ" placement="top-left">
+                <a mdbWavesEffect (click)="zoomOut()" class="nav-link text-white">
+                    <i class="mdi mdi-magnify-minus-outline"></i>
+                </a>
+            </li>
+            <li class="action-icon nav-item" container="body" ngbTooltip="Phóng to" placement="top-left">
+                <a mdbWavesEffect (click)="zoomIn()" class="nav-link text-white">
+                    <i class="mdi mdi-magnify-plus-outline"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+<div class="wfl-warp" #wflWarp>   
+    <svg class="wfl-transaction-layer" #svgLayer>
+        <svg:g *ngFor="let item of transactions" 
+        svg-arrow
+        [lineStyle]="item.line_style || 1"
+        [from]="item.position_from" 
+        [to]="item.position_to"
+        [name]="hasTransName?item.name:''"
+        [pointSize]="{w:pointsize.width,h:pointsize.height}"
+        (emitArrowClick)="onTransClick(item)"
+        ></svg:g>
+    </svg>
+    
+    
+    <div *ngFor="let item of activities"
+        [ngDraggable]="isEditable"
+        class="activity"
+        [ngClass]="isBoxShadow ? 'z-depth-1' : ''"
+        [ngStyle]="{'width': pointsize.width+'px','height': pointsize.height+'px'}"
+        [position]="item.position"  
+        (movingOffset)="moveActivity($event,item)"
+        (endOffset)   ="moveActivityEnd($event,item)"  
+        [bounds]="wflWarp" 
+        [inBounds]="true"
+        [outOfBounds]="{top: false, right: true, bottom: true, left: false}"
+        >
+        <ng-template *ngTemplateOutlet="activityContentTpl?.templateRef; context:{$implicit:item,index:i}"></ng-template>
+    </div>
+</div>

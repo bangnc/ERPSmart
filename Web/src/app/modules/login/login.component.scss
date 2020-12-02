@@ -1,0 +1,224 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*Bootrap*/
+
+//breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~angular-bootstrap-md/scss/core/colors";
+:host {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: #F5f5f5;
+    .login-warp {
+        // background-image: url("../../../assets/images/architecture.jpg");
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        // background-position: center center;
+        // background-color: transparent;
+        background-color: white;
+        .login-content {
+            width: 100vw;
+            height: 100vh;
+            padding: 25px 30px 35px!important;
+            background-position: center top !important;
+            background-repeat: no-repeat !important;
+            background-color: #1173B5 !important;
+            background-size: auto !important;
+            .mainContent{
+                max-width: 1170px;
+                height: auto;
+                margin: 0 auto;
+                display: inline-block;
+                padding: 0 8px;
+                padding-top: 32.5px;
+                .mainLeft{
+                    width: 50%;
+                    float: left;
+                    margin-top: 10%;
+                    margin-left: 8.33333333%;
+                    .logo{
+                        width: 100%;
+                        img{
+                            width: 44%;
+                        }
+                    }
+                    .titleProduct{
+                        padding-top: 22px;
+                        width: 100%;
+                        h1{
+                            margin: 0;
+                            font-size: 20px;
+                            color: white;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            line-height: 30px;
+                            font-family: Tahoma;
+                        }
+                    }
+                    .description{
+                        width: 100%;
+                        display: inline-block;
+                        padding-top: 40px;
+                        .desItem{
+                            width: 100%;
+                            display: inline-block;
+                            border-top: 1px dashed #92bfe1;
+                            color: #fff;
+                            float: left;
+                            .desImg{
+                                float: left;
+                                display: table-cell;
+                                vertical-align: top;
+                                padding-top: 15px;
+                                text-align: left;
+                            }
+                            .desAddress{
+                                float: left;
+                                display: table-cell;
+                                vertical-align: top;
+                                padding-top: 15px;
+                                text-align: left;
+                                padding-left: 15px;
+                            }
+                        }
+                    }
+                }
+                .mainRight{
+                    width: 50%;
+                    float: left;
+                    margin-top: 10%;
+                    .form-login{
+                        padding: 25px 30px 35px!important;
+                        max-width: 460px!important;
+                        width: 100%;
+                        border-radius: 5px;
+                        border: 1px solid #aecbca;
+                        background-color: #f1f4f6;
+                        .card-title{
+                            font-size: 22.5px;
+                            font-weight: bold !important;
+                            color: #278bce !important;
+                            text-transform: uppercase;
+                            margin: 0 0 15px !important;
+                        }
+                        button{
+                            position: relative;
+                            border-radius: 5px;
+                            background: #1b5894 !important;
+                            font-size: 17px;
+                            font-weight: bold;
+                            i{
+                                position: absolute;
+                                top: 10px;
+                                right: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            // .logo-img{
+            //     height: 94px;
+            // }
+            // .avatar{
+            //     img{
+            //         width: 110px;
+            //         height: 110px;
+            //     }
+            // }
+            // .login-form{
+            //     // width: 290px;
+            //     margin: auto;
+            // }
+            // .card-title{
+            //     color: #31bde3 ;
+            //     font-size: 24.5px;
+            //     text-transform: uppercase;
+            // }
+            // .form-group{
+            //     label{
+            //         font-size: 16px;
+            //         line-height: 20px;
+            //     }
+            //     input.form-control{
+            //         border: 1px solid #979797 !important;
+            //         margin-bottom: 10px;
+            //         padding: 13px 20px !important;
+            //         height: 46px !important;
+            //         border-radius: 5px !important;
+            //     }
+            // }
+            // .login-button{    
+            //     background-color: #31bde3 !important;
+            //     background: -moz-linear-gradient(left, #31bde3 0%, #b5edfb 100%) !important;
+            //     background: -webkit-gradient(left top, right top, color-stop(0%, #31bde3), color-stop(100%, #b5edfb)) !important;
+            //     background: -webkit-linear-gradient(left, #31bde3 0%, #b5edfb 100%) !important;
+            //     background: -o-linear-gradient(left, #31bde3 0%, #b5edfb 100%) !important;
+            //     background: -ms-linear-gradient(left, #31bde3 0%, #b5edfb 100%) !important;
+            //     background: linear-gradient(to right, #31bde3 0%, #b5edfb 100%) !important;
+            //     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31bde3', endColorstr='#b5edfb', GradientType=1 );                                    
+            //     border-radius: 24px;
+            //     font-weight: 700;
+            //     font-size: 16px;
+            //     position: relative;
+            //     padding: 12px 15px 12px;
+            //     box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+            //     i.mdi{
+            //         position: absolute;
+            //         right: 18px;
+            //     }
+            // }
+        }
+        .login-footer{
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            width: 100vw;
+            font-weight: bold;
+            a{
+                padding: 10px;
+            }
+        }
+        .btn-gplus {
+            background-color: #dd4b39 !important;
+        }
+    }
+    /*
+    .login-content {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        .login-logo {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-body {
+            display: flex;
+            flex: 2;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            .login-title {
+                font-size: 1.2rem;
+            }
+            .login-error {
+                font-size: .8rem;
+            }
+        }
+    }
+    @include media-breakpoint-up(sm) {
+        .login-content {
+            background-color: $white-base;
+            display: flex;
+            width: 375px;
+            height: 85vh;
+        }
+    }*/
+}

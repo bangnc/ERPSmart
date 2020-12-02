@@ -1,0 +1,26 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <div class="input-group-warp" #radioGroup>
+        <div *ngFor="let item of items" [ngClass]="{'custom-control-inline':vertical!='true'}"
+            class="custom-control custom-radio">
+            <input type="radio" [formControl]="frmCtr" [id]="id+'-'+item[options.value]" [attr.name]="id" [name]="id"
+                [value]="item[options.value]" class="custom-control-input">
+            <label class="custom-control-label radio" [for]="id+'-'+item[options.value]">{{item[options.label]}}</label>
+        </div>
+    </div>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-container>
+<ng-template #readMode>
+
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <div class="input-group-warp" #radioGroup>
+        <div *ngFor="let item of items" [ngClass]="{'custom-control-inline':vertical!='true'}"
+            class="custom-control custom-radio">
+            <input style="cursor: default;" type="radio" [formControl]="frmCtr" [id]="item[options.value]" [name]="id"
+                class="custom-control-input" [attr.disabled]="true" [value]="item[options.value]">
+            <label class="custom-control-label radio" [for]="item[options.value]"
+                style="cursor: default;">{{item[options.label]}}</label>
+        </div>
+    </div>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-template>

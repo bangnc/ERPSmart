@@ -1,0 +1,74 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <div class="file-field">
+        <div class="btn btn-primary btn-sm">
+            <i id="icon-upload" *ngIf="icon" [class]="icon"></i>
+            <!-- <span>Chọn</span> -->
+            <input #inputFile type="file" [accept]="accept" (change)="updateValue($event)" [id]="id" [name]="id"
+                [multiple]="multiple"  [formControl]="frmCtr">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" readonly (click)="inputClick()" [placeholder]="placeholder"
+                *ngIf="!value || (multiple && (!fileClients || fileClients.length === 0))">
+            <ng-container *ngIf="!multiple">
+                <table *ngIf="value">
+                    <tr style="height: auto;">
+                        <td class="file-name">
+                            <a>{{value.name}} &nbsp;&nbsp;&nbsp;</a>
+                        </td>
+                        <td class="remove-file" style="float:right;">
+                            <span style="font-size: 19px; width: 30px;" (click)="removeFile(file)"
+                                class="mdi mdi-close" title="Xóa"></span>
+                        </td>
+                    </tr>
+                </table>
+            </ng-container>
+
+            <!-- truong hop chon n file -->
+            <ng-container *ngIf="multiple && fileClients && fileClients.length > 0">
+                <table>
+                    <tr *ngFor="let item of fileClients;index as i">
+                        <td class="file-name">
+                            <a target="_blank">{{i+1}}.{{item.name}} &nbsp;&nbsp;&nbsp;</a>
+                        </td>
+                        <td class="remove-file" style="float:right">
+                            <span style="font-size: 19px; width: 30px;" (click)="removeFile(item)"
+                                class="mdi mdi-close" title="Xóa"></span>
+                        </td>
+                    </tr>
+                </table>
+            </ng-container>
+
+        </div>
+    </div>
+    <label [for]="id" [attr.data-error]="errors" class="active">{{title}}</label>
+</ng-container>
+
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <p class="form-control form-control-static" style="height: auto;" *ngIf="!multiple">
+        <!-- truong hop chon 1 file -->
+        <ng-container>
+            <span *ngIf="value">
+                <a target="_blank" [href]="getUrl(value.path)">{{value.name}}</a>
+            </span>
+            <span *ngIf="!value">
+                -&nbsp;
+            </span>
+        </ng-container>
+    </p>
+    <p class="form-control form-control-static" *ngIf="multiple" style="height: auto;">
+        <ng-container *ngIf="multiple">
+            <table class="readmode">
+                <tr *ngFor="let item of fileClients;index as i">
+                    <td class="file-name">
+                        <a target="_blank" [href]="getUrl(item.path)">{{i+1}}.{{item.name}} &nbsp;&nbsp;&nbsp;</a>
+                    </td>
+
+                </tr>
+            </table>
+        </ng-container>
+    </p>
+
+    <label [for]="id" [attr.data-error]="errors" class="form-control-label active">{{title}}</label>
+</ng-template>

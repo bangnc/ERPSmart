@@ -1,0 +1,57 @@
+<app-page-form *appPermission="true;let permission" [loading]="loading" pageTitle="THÔNG TIN TÀI KHOẢN TÍCH HỢP"
+    (emitNavigateBack)="navigateBack($event)">
+    <ng-container app-page-actions>
+        <button *ngIf="editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary"
+            (click)="save()">
+            <i class="mdi mdi-content-save"></i>
+            Lưu lại
+        </button>
+        <button *ngIf="!editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+            <i class="mdi mdi-pencil-box-outline"></i>
+            Sửa
+        </button>
+        <button *ngIf="!editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <app-input [autofocus]="true" [isEditable]=editMode name="ma_he_thong" type="text"
+                                title="Mã hệ thống(*)" [(ngModel)]="data.ma_he_thong"
+                                [validationMessages]="validationMessages.ma_he_thong" required></app-input>
+                        </div>
+                        <div class="col-md-6">
+                                <app-input [isEditable]=editMode name="ten_he_thong" type="text" title="Tên hệ thống (*)"
+                                    [(ngModel)]="data.ten_he_thong" [validationMessages]="validationMessages.ten_he_thong"
+                                    required></app-input>
+                            </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="tai_khoan" type="text"
+                                title="Tên tài khoản(*)" [(ngModel)]="data.tai_khoan"
+                                [validationMessages]="validationMessages.tai_khoan" required></app-input>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="password" type="password" title="Mật khẩu"
+                                [(ngModel)]="data.password">
+                            </app-input>
+                        </div>
+                        <div class="col-md-6">
+                                <app-input name="tinh_trang" type="radio-group" vertical="false" title="Tình trạng"
+                                    [isEditable]=editMode [data]="status" [(ngModel)]="data.tinh_trang">
+                                </app-input>
+                            </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

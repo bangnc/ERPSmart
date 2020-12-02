@@ -1,0 +1,62 @@
+<app-page-form *appPermission="true;let permission" [loading]="loading" 
+    pageTitle="THÔNG TIN NHẬT KÝ HỆ THỐNG" (emitNavigateBack)="navigateBack($event)">
+    <ng-container app-page-actions>
+            <button *ngIf="isTypeAction(data.hanh_dong)"  mdbWavesEffect class="btn btn-sm btn-primary" (click)="clickXemChiTiet(data)">
+                    <i class="mdi mdi-content-save"></i>
+                    Xem chi tiết
+                </button>
+                
+        </ng-container>
+
+
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm" *ngIf="data">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+
+                            <app-input [autofocus]="true" [isEditable]=editMode name="nguoi_thuc_hien" type="text" title="Người thực hiện"
+                                [(ngModel)]="data.nguoi_thuc_hien.ten"></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="ngay_tao" type="date" mode="time" title="Ngày tạo" [(ngModel)]="data.ngay_tao"></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="to_chuc" type="text" title="Đơn vị" [(ngModel)]="data.to_chuc.ten"></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="noi_dung" type="text" title="Nội dung" [(ngModel)]="data.noi_dung"></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Lịch sử thay đổi</p>
+                            <table class="table table-sm table table-bordered">
+                                <thead>
+                                    <tr>
+
+
+                                        <th scope="col">Tên trường</th>
+                                        <th scope="col">Giá trị</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let item of ban_ghi;'>
+                                        <td><b>{{item.key}}</b></td>
+                                        <td>
+                                            <p *ngIf="!isObject(item.value);else objectDisp">{{item.value}}</p>
+                                            <ng-template #objectDisp>
+                                                <pre>{{item.value | json}}</pre>
+                                            </ng-template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

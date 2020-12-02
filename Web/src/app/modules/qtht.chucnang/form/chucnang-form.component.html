@@ -1,0 +1,61 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"  
+[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"   pageTitle="THÔNG TIN CHỨC NĂNG" (emitNavigateBack)="navigateBack($event)"  >
+    <ng-container app-page-actions>
+        <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <app-input [autofocus]="true"  [isEditable]=editMode name="ma" type="text" title="Mã chức năng (*)"
+                                [(ngModel)]="data.ma" [validationMessages]="validationMessages.ma" required></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="ten" type="text" title="Tên chức năng (*)"
+                                [(ngModel)]="data.ten" [validationMessages]="validationMessages.ten" required></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input name="module_id" type="select" title="Module" [isEditable]=editMode [(ngModel)]="data.module_id"
+                                [data]=Modules (ngModelChange)="onChangeModule(data.module_id)" [readModeData]="data.module" [options]="{value:'id', label:'ten', multiple:false}"
+                                [validationMessages]="validationMessages.module_id" required>
+                            </app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input name="loaichucnang_id" type="select" title="Loại chức năng" [isEditable]=editMode [(ngModel)]="data.loai_chuc_nang_id"
+                                [data]=ds_loaichucnang [readModeData]="data.loai_chuc_nang" [options]="{value:'id', label:'ten', multiple:false}">
+                            </app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="so_thu_tu" type="number" title="Số thứ tự" [(ngModel)]="data.so_thu_tu"></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="mo_ta" type="textarea" title="Thông tin khác" [(ngModel)]="data.mo_ta"></app-input>
+                        </div>
+                        <div class="col-md-12" style="padding: 15px;">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" [disabled]="!editMode" class="custom-control-input"
+                                    id="tai_khoan_goc" name="tai_khoan_goc"
+                                    [(ngModel)]="data.tai_khoan_goc">
+                                <label class="custom-control-label" for="tai_khoan_goc">Tài khoản gốc</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

@@ -1,0 +1,70 @@
+<header class="navbar w-100 no-shadow">
+    <div class="float-left">
+        <a class="icon" (click)="closeNav()">
+            <i class="mdi mdi-close"></i>
+        </a>
+    </div>
+    <div class="m-auto">
+        <span class="title">
+            Thông báo
+        </span>
+    </div>
+    <div class="float-right">
+        <a *ngIf="notifications.meta.total>0" class="icon" container="body" ngbTooltip="Đánh dấu tất cả đã đọc" placement="bottom" (click)="markReadAllNotify()">
+            <i class="mdi mdi-check-all"></i>
+        </a>
+    </div>
+</header>
+<div class="content">
+    <ul class="list-notify list-group list-group-flush" *ngIf="notifications.meta.total>0">
+        <li [ngClass]="{'unread' : item.states==0}" *ngFor="let item of notifications.data" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a [routerLink]=item.link class="d-flex flex-row align-items-center" (click)="viewNotify(item)">
+                <div class="notify-icon primary-color mr-2 text-white d-flex justify-content-center align-items-center rounded-circle">
+                    <i [class]="item.icon"></i>
+                </div>
+                <div class="notify-content">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1 text-truncate">{{item.name}}</h6>
+                        <small>{{item.created_date | messageTime}}</small>
+                    </div>
+                    <p class="mb-1">{{item.content}}</p>
+                </div>
+            </a>
+            <div class="notify-action animated fadeIn">
+                <a  *ngIf="item.states==0" container="body" ngbTooltip="Đánh dấu đã đọc" placement="left" (click)="markReadNotify(item)">
+                    <i class="mdi mdi-check-circle-outline"></i>
+                </a>
+                <a container="body" ngbTooltip="Ẩn thông báo này" placement="left" (click)="hiddenNotify(item.id)">
+                    <i class="mdi mdi-close"></i>
+                </a>
+            </div>
+        </li>
+    </ul>
+    <div *ngIf="notifications.meta.total==0" class="text-center pt-2">
+        <span class="font-italic">Hiện không có thông báo nào</span>
+    </div>
+
+    <!-- <div [class]=item.mediaClass *ngFor="let item of notifications.data">
+        <a class="media" [routerLink]=item.link (click)="view(item)">
+            <div class="media-left waves-light text-center">
+                <img class="rounded-circle" [src]=item.UserCreat.avatar src-fallback="../../../assets/images/default.png" alt="avatar">
+            </div>
+            <div class="media-body pl-1 text-dark">
+                <span class="text-title">{{item.name}}</span> &nbsp;
+                <div class="text-content">
+                    <span class="text-name">{{item.UserCreat.name}}</span>&nbsp;
+                    <span>{{item.content}} </span>
+                </div>
+                <small>{{item.created_date | messageTime}}</small>
+            </div>
+        </a>
+        <div class="media-right">
+            <a *ngIf="item.states !== 1" container="body" ngbTooltip="Đánh dấu đã đọc" placement="left" (click)="checkRead(item)">
+                <i class="mdi mdi-check-circle-outline"></i>
+            </a>
+            <a container="body" ngbTooltip="Xóa" placement="left" (click)="delete(item.id)">
+                <i class="mdi mdi-delete-outline"></i>
+            </a>
+        </div>
+    </div> -->
+</div>

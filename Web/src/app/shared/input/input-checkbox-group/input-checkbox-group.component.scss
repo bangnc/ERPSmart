@@ -1,0 +1,34 @@
+
+
+:host{
+    &.ng-invalid{
+        .inputVal.text-danger{
+            visibility: visible;
+        }
+        .input-group-warp{
+            border: 1px dashed #ff3547;
+        }
+    }
+    ::ng-deep{
+        .input-group-warp{
+            border: 1px dashed transparent;
+            display: inline-block;
+            padding: 5px;
+            margin-top: 0.65rem;
+        }        
+        .inputVal.text-danger{
+            visibility: hidden;
+            bottom: -20px;
+            left: 0;
+            top: auto;
+        }
+        .custom-control-label{
+            position: relative;
+        }
+        .prefix ~ .custom-control{
+            &.custom-radio {
+                margin-left: 2.5rem;
+            }
+        }
+    }
+}

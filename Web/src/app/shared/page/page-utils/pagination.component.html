@@ -1,0 +1,20 @@
+<ul class="pagination" [ngClass]="classMap">
+    <li class="pagination-first page-item" *ngIf="boundaryLinks" [class.disabled]="noPrevious()||disabled">
+        <a class="page-link" href (click)="selectPage(1, $event)" [innerHTML]="getText('first')"></a>
+    </li>
+    <li class="pagination-prev page-item" *ngIf="directionLinks" [class.disabled]="noPrevious()||disabled">
+        <a class="page-link" href (click)="selectPage(page - 1, $event)" [innerHTML]="getText('previous')"></a>
+    </li>
+    <li class="pagination-page page-item">
+       <input class="form-control page-text bg-info text-white m-0 border-0" type="text" [ngModel]="page" 
+            (keyup.enter)="selectPage($event.target.value, $event)"
+            (keypress)="onlyNumberKey($event)" />
+    </li>
+
+    <li class="pagination-next page-item" *ngIf="directionLinks" [class.disabled]="noNext()||disabled">
+        <a class="page-link" href (click)="selectPage(page + 1, $event)" [innerHTML]="getText('next')"></a>
+    </li>
+    <li class="pagination-last page-item" *ngIf="boundaryLinks" [class.disabled]="noNext()||disabled">
+        <a class="page-link" href (click)="selectPage(totalPages, $event)" [innerHTML]="getText('last') "></a>
+    </li>
+</ul>

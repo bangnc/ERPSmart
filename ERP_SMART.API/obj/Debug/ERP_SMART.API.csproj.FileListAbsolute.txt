@@ -127,3 +127,8 @@ F:\BangNC\ChemGio\ERP_SMART.API\obj\Debug\ERP_SMART.API.csproj.CoreCompileInputs
 F:\BangNC\ChemGio\ERP_SMART.API\obj\Debug\ERP_SMART.API.csproj.CopyComplete
 F:\BangNC\ChemGio\ERP_SMART.API\obj\Debug\ERP_SMART.API.dll
 F:\BangNC\ChemGio\ERP_SMART.API\obj\Debug\ERP_SMART.API.pdb
+F:\BangNC\ChemGio\ERP_SMART.API\bin\System.Web.Cors.dll
+F:\BangNC\ChemGio\ERP_SMART.API\bin\System.Web.Http.Cors.dll
+F:\BangNC\ChemGio\ERP_SMART.API\bin\System.Web.Http.Cors.xml
+F:\BangNC\ChemGio\ERP_SMART.API\bin\Microsoft.Owin.Cors.dll
+F:\BangNC\ChemGio\ERP_SMART.API\bin\Microsoft.Owin.Cors.xml

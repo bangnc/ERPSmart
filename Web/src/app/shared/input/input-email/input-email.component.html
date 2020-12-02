@@ -1,0 +1,22 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <input type="text" 
+    appInputActiveDirective 
+    [attr.data-error]="errors"
+    data-success=" " 
+    [id]="id"
+    [placeholder]="placeholder" 
+    class="form-control validate" 
+    [formControl]="frmCtr"
+    [ngClass]="{'autofocus': autofocus}"
+    [autofocus]="autofocus">
+    <label [for]="id" >{{title}}</label>
+</ng-container>
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <p type="text" [id]="id" class="form-control form-control-static">
+        <ng-container *ngIf="value;else noValue">{{value}}</ng-container>
+        <ng-template #noValue>-&nbsp;</ng-template>
+    </p>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-template>

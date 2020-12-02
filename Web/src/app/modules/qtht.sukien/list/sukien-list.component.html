@@ -1,0 +1,71 @@
+<app-page-list
+*appPermission="true;let permission" 
+[noCheckBox]="!permission[perms.DELETE]" 
+pageTitle="DANH SÁCH CHỨC VỤ" 
+keyExtractor="id"  
+[data]="data"
+[meta]="meta"
+[pageOption]="pageOption"
+[loading]="loading" 
+(emitNavigateBack)="navigateBack($event)"
+(emitChange)="papeOptionChange($event)"
+(emitRowDbClick)="showDetail($event)">
+    <!-- Phần config cho filter bar -->
+    <ng-template app-page-filter let-itemSelected>
+        <form (ngSubmit)="filter()">
+            <div class="row m-2">
+                <div class="col-md-4">
+                    <app-input name="tieu_de"  [autofocus]="true" type="text" title="Tiêu đề" [(ngModel)]="pageOption.filter.tieu_de"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="noi_dung" type="text" title="Nội dung" [(ngModel)]="pageOption.filter.noi_dung"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="tinh_trang" type="select" title="Tình trạng" [(ngModel)]="pageOption.filter.tinh_trang"
+                    [data]=TinhTrangs [options]="{value:'id', label:'ten', multiple:false}"></app-input>
+                </div>
+                <button type="submit" style="display:none"></button>
+            </div>
+        </form>
+    </ng-template>
+    <!-- Phần config cho action bar -->
+    <ng-template app-page-actions let-itemSelected>
+        <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT]" (click)="create()">
+            <i class="mdi mdi-plus"></i>
+            Thêm mới
+        </button>
+        <button mdbWavesEffect class="btn btn-sm btn-danger" *ngIf="permission[perms.DELETE] && itemSelected.length > 0" (click)="deletes(itemSelected)">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-template>
+    <!--Phần config cho table list-->
+    <app-page-column title="STT" width="60px" class="justify-content-center"class="d-none d-sm-flex">
+        <ng-template col-body let-index=index>{{idx + index}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Tiêu đề" orderby='tieu_de'>
+        <ng-template col-body let-item>{{item.tieu_de}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Nội dung" orderby='noi_dung'>
+        <ng-template col-body let-item>{{item.noi_dung}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Tình trạng" orderby='tinh_trang'>
+        <ng-template col-body let-item>{{item.tinh_trang == 1 ? "Hiển thị trang chủ" : "Ẩn"}}</ng-template>
+    </app-page-column>
+    <app-page-column title="" class="col-action" width="100px">
+        <ng-template col-body let-item>
+            <ul class="nav nav-actions">
+                <li  class="action-icon nav-item" container="body" ngbTooltip="Thông tin chi tiết" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-info" (click)="showDetail(item)">
+                        <i class="mdi mdi-information-outline"></i>
+                    </a>
+                </li>
+                <li class="action-icon nav-item" *ngIf="permission[perms.DELETE]" container="body" ngbTooltip="Xóa" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-danger" (click)="delete(item)">
+                        <i class="mdi mdi-delete-outline"></i>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </app-page-column>
+</app-page-list>

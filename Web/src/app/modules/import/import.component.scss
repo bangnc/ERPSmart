@@ -1,0 +1,54 @@
+:host {
+    ::ng-deep {
+        .form-content {
+            display: flex;
+            .activity {
+                .card-body {
+                    .card-title {
+                        margin-bottom: 0rem;
+                        margin-top: 5px;
+                        margin-right: 60px;
+                        max-width: 100px;
+                    }
+                    .nav-actions {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        .action-icon {
+                            padding: 0px;
+                            .nav-link {
+                                width: 30px;
+                                height: 30px;
+                                padding: .1rem .3rem;
+                                i.mdi {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+                        .dropdown-toggle::after {
+                            display: none;
+                        }
+                    }
+                    hr {
+                        margin-top: .25rem;
+                        margin-bottom: .25rem;
+                    }
+                    
+                    .acty-type{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        position: absolute;
+                        right: 4px;
+                        bottom: 4px;
+                        font-size: .5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #cccccc;
+                    }
+                }
+            }
+        }
+    }
+}

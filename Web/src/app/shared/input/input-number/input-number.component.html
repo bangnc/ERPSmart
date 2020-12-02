@@ -1,0 +1,38 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <ng-container>
+            <input *ngIf="theme ==='md'" type="text"
+            appInputActiveDirective
+            [textMask]="maskOption" 
+            [attr.data-error]="errors"
+            data-success=" " 
+            [id]="id" 
+            [placeholder]="placeholder"
+            class="form-control validate" 
+            [formControl]="frmCtr"
+            [ngClass]="{'autofocus': autofocus}"
+            [autofocus]="autofocus"
+            (blur)="blur()">
+
+            <input *ngIf="theme ==='bootstrap'" type="text"
+            [textMask]="maskOption" 
+            [attr.data-error]="errors"
+            data-success=" " 
+            [id]="id" 
+            [placeholder]="placeholder"
+            class="form-control validate" 
+            [formControl]="frmCtr"
+            [ngClass]="{'autofocus': autofocus}"
+            [autofocus]="autofocus"
+            (blur)="blur()">
+        <label *ngIf="title" [for]="id" >{{title}}</label>
+    </ng-container>
+</ng-container>
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <p type="text" [id]="id" class="form-control form-control-static">
+        <ng-container *ngIf="value || value==0;else noValue">{{value}}</ng-container>
+        <ng-template #noValue>-&nbsp;</ng-template>
+    </p>
+    <label *ngIf="title" [for]="id" class="active">{{title}}</label>
+</ng-template>

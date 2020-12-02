@@ -1,0 +1,35 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <ng-select [openOnEnter]=false dropdownPosition="bottom" *ngIf="hasBindValue" [items]="data"
+        [typeahead]="inputSearch$" [loading]="loading" [virtualScroll]="true" (scrollToEnd)="onScrollToEnd()"
+        (close)="onClose()" [bindLabel]="options.label" [bindValue]="options.value" [id]="id"
+        [multiple]="options.multiple" [placeholder]="placeholder ? placeholder : title" (change)="change(value)"
+        (search)="search()"
+        (focus) = "onFocus()"
+        (blur) ="onBlur()"
+        (clear)="onClear()"
+        [formControl]="frmCtr">
+    </ng-select>
+    <ng-select [openOnEnter]=false dropdownPosition="bottom" *ngIf="!hasBindValue" [items]="data"
+        [typeahead]="inputSearch$" [loading]="loading" [virtualScroll]="true" (scrollToEnd)="onScrollToEnd()"
+        (close)="onClose()" [bindLabel]="options.label" [id]="id" [multiple]="options.multiple"
+        [placeholder]="placeholder ? placeholder : title" (change)="change(value)" (search)="search()"
+        [formControl]="frmCtr">
+    </ng-select>
+    <span class="inputVal text-danger" style="visibility: hidden; top: 32px;">{{errors}}</span>
+    <!-- <label [for]="id" class="active">{{title}}</label> -->
+</ng-container>
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <p *ngIf="options.multiple" type="text" [id]="id" class="form-control form-control-static" #select>
+        <ng-container *ngIf="readModeData.length == 0">-&nbsp;</ng-container>
+        <ng-container *ngFor="let item of readModeData">{{item[options.label]}},&nbsp;</ng-container>
+    </p>
+    <p *ngIf="!options.multiple" type="text" [id]="id" class="form-control form-control-static" #select>
+        <ng-container *ngIf="value!==null && value !='';else noValue">{{readModeData?readModeData[options.label]:null}}
+        </ng-container>
+        <ng-template #noValue>-&nbsp;</ng-template>
+    </p>
+    <label [for]="id" class="active" *ngIf="titleWithPlacehoder">{{title ? title : placeholder}}</label>
+    <label [for]="id" class="active" *ngIf="!titleWithPlacehoder">{{title}}</label>
+</ng-template>

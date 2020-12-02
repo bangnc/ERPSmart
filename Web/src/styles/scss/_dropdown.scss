@@ -1,0 +1,26 @@
+.dropdown {
+    .dropdown-menu{
+        z-index: 9999;
+    }
+    &.show {
+        .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transition: 0.1s;
+            transform: translate3d(0px, 0px, 0px);
+        }
+    }
+}
+.dropup{
+    .dropdown-menu{
+        z-index: 9999;
+    }
+    &.show {
+        .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transition: 0.1s;
+            transform: translate3d(0px, 0px, 0px);
+        }
+    }
+}

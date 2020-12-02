@@ -1,0 +1,94 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"  
+[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"   pageTitle="THÔNG TIN KỲ BÁO CÁO" (emitNavigateBack)="navigateBack($event)"  >
+        <ng-container app-page-actions>
+            <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+        </ng-container>
+        <ng-container app-page-content>
+            <form action="" #positionlForm="ngForm">
+                <div class="row m-2">
+                    <div class="col-md-12">
+                        <div class="row m-2">
+                            <div class="col-md-6">
+                                <app-input [autofocus]="true" [isEditable]=editMode name="ten" type="text" title="Tên kỳ báo cáo (*)" [(ngModel)]="data.ten" 
+                                    required></app-input>
+                            </div>
+                           
+                            
+                            <div class="col-md-6">
+                                <!-- <app-input [isEditable]=editMode name="ngay_sinh" type="date" title="Ngày sinh" [(ngModel)]="data.ngay_sinh"></app-input> -->
+                                <label class="col-md-4" style="margin-right: 5px;">Ngày báo cáo</label>
+                               
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="ngay_bao_cao" type="number" [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.ngay_bao_cao" pattern="^([1-9]|[12]\d|3[0-1])$" [validationMessages]="validationMessages.ngay_bao_cao"
+                                        required></app-input>
+                                </div>
+                                /
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="thang_bao_cao" type="number" required [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.thang_bao_cao" pattern="^([1-9]|[1][0-2])$" [validationMessages]="validationMessages.thang_bao_cao"></app-input>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <app-input [isEditable]=editMode name="ngay_sinh" type="date" title="Ngày sinh" [(ngModel)]="data.ngay_sinh"></app-input> -->
+                                <label  style="margin-right: 5px;">Ngày chốt báo cáo từ</label>
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="ngay_bat_dau" type="number" required [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.ngay_bat_dau" pattern="^([1-9]|[12]\d|3[0-1])$" [validationMessages]="validationMessages.ngay_bat_dau"></app-input>
+                                </div>
+                                /
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="thang_bat_dau" type="number" [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.thang_bat_dau" pattern="^([1-9]|[1][0-2])$" [validationMessages]="validationMessages.thang_bat_dau"></app-input>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <app-input [isEditable]=editMode name="ngay_sinh" type="date" title="Ngày sinh" [(ngModel)]="data.ngay_sinh"></app-input> -->
+                                <label class="col-md-4" style="margin-right: 5px;">đến ngày </label>
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="ngay_ket_thuc" type="number" required [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.ngay_ket_thuc" pattern="^([1-9]|[12]\d|3[0-1])$" [validationMessages]="validationMessages.ngay_ket_thuc"></app-input>
+                                </div>
+                                /
+                                <div class="input-ngay-sinh">
+                                    <app-input [isEditable]=editMode name="thang_ket_thuc" type="number" [thousandsSeparatorSymbol]=false
+                                        [(ngModel)]="data.thang_ket_thuc" pattern="^([1-9]|[1][0-2])$" [validationMessages]="validationMessages.thang_ket_thuc"></app-input>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                    
+                                    <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="tinh_trang" [disabled]=!editMode class="custom-control-input" id="tinh_trang" [(ngModel)]="data.tinh_trang">
+                                            <label class="custom-control-label" for="tinh_trang">Áp dụng chốt báo cáo</label>
+                                        </div>
+                                    
+                                <!-- <app-input [isEditable]=editMode name="tinh_trang" type="text" title="Tình trạng" [(ngModel)]="data.tinh_trang" 
+                                    ></app-input> -->
+                               
+                                
+                            </div>
+                        </div>  
+                        
+                        
+                    </div>
+                    
+                    
+                </div>
+            </form>
+        </ng-container>
+    </app-page-form>

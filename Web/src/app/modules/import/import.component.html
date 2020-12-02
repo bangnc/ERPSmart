@@ -1,0 +1,32 @@
+<app-page-form [noSubHeader]=true [hasNavBack]="false" pageTitle="Hệ thống quản lý cán bộ, hội viên">
+    <ng-container app-page-actions>
+    </ng-container>
+    <ng-container app-page-content>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Dân tộc</label>
+                <input type="file" (change)="onFileDanTocChange($event)" multiple="false" />
+                <br />
+                <label>Tôn giáo</label>
+                <input type="file" (change)="onFileTonGiaoChange($event)" multiple="false" />
+                <br />
+                <label>nghề nghiệp/TP</label>
+                <input type="file" (change)="onFileNgheNghiepChange($event)" multiple="false" />                            
+                <br />
+                <label>Cơ cấu tổ chức</label>
+                <input type="file" (change)="onFileCoCauToChucChange($event)" multiple="false" />
+                <br />
+                <label>Điều hướng</label>
+                <input type="file" (change)="onFileDieuHuongChange($event)" multiple="false" /> 
+                <br />
+                <label>Chức năng</label>
+                <input type="file" (change)="onFileChucNangChange($event)" multiple="false" />           
+                <br />
+                <label>Chuyên ngành đào tạo</label>
+                <input type="file" (change)="onFileChuyenNganhChange($event)" multiple="false" />           
+            </div>
+        </div>
+
+        <!-- <input type="file" (change)="onFileChange($event)" multiple="false" />       -->
+    </ng-container>
+</app-page-form>

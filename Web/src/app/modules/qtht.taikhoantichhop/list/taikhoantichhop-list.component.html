@@ -1,0 +1,64 @@
+<app-page-list
+*appPermission="true;let permission" 
+[noCheckBox]="!permission[perms.DELETE]" 
+pageTitle="DANH SÁCH TÀI KHOẢN TÍCH HỢP" 
+keyExtractor="id"  
+[data]="data"
+[meta]="meta"
+[pageOption]="pageOption"
+[loading]="loading" 
+(emitNavigateBack)="navigateBack($event)"
+(emitChange)="papeOptionChange($event)"
+(emitRowDbClick)="showDetail($event)">
+    <!-- Phần config cho filter bar -->
+    <ng-template app-page-filter let-itemSelected>
+        <form (ngSubmit)="filter()">
+            <div class="row m-2">
+                <div class="col-md-4">
+                    <app-input name="tai_khoan" type="text" title="Tên tài khoản" [(ngModel)]="pageOption.filter.tai_khoan" [autofocus]="true"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="ten_he_thong" type="text" title="Tên hệ thống" [(ngModel)]="pageOption.filter.ten_he_thong"></app-input>
+                </div>
+                <button type="submit" style="display:none"></button>
+            </div>
+        </form>
+    </ng-template>
+    <!-- Phần config cho action bar -->
+    <ng-template app-page-actions let-itemSelected>
+        <button mdbWavesEffect class="btn btn-sm btn-primary"  (click)="create()">
+            <i class="mdi mdi-plus"></i>
+            Thêm mới
+        </button>
+        <button mdbWavesEffect class="btn btn-sm btn-danger" *ngIf="permission[perms.DELETE] && itemSelected.length > 0" (click)="deletes(itemSelected)">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-template>
+    <!--Phần config cho table list-->
+    <app-page-column title="STT" width="60px" class="justify-content-center"class="d-none d-sm-flex">
+        <ng-template col-body let-index=index>{{idx + index}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Tên" orderby='tai_khoan'>
+        <ng-template col-body let-item>{{item.tai_khoan}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Thông tin khác" orderby='ten_he_thong'>
+        <ng-template col-body let-item>{{item.ten_he_thong}}</ng-template>
+    </app-page-column>
+    <app-page-column title="" class="col-action" width="100px">
+        <ng-template col-body let-item>
+            <ul class="nav nav-actions">
+                <li  class="action-icon nav-item" container="body" ngbTooltip="Thông tin chi tiết" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-info" (click)="showDetail(item)">
+                        <i class="mdi mdi-information-outline"></i>
+                    </a>
+                </li>
+                <li class="action-icon nav-item" *ngIf="permission[perms.DELETE]" container="body" ngbTooltip="Xóa" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-danger" (click)="delete(item)">
+                        <i class="mdi mdi-delete-outline"></i>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </app-page-column>
+</app-page-list>

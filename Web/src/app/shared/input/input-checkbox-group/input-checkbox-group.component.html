@@ -1,0 +1,32 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <div class="input-group-warp" #checkBox>
+        <div *ngFor="let item of items" [ngClass]="{'custom-control-inline':vertical!='true'}"
+            class="custom-control custom-checkbox">
+            <input type="checkbox" 
+                [(checklist)]="value" 
+                [id]="id+'-'+item[options.value]" 
+                [name]="id"
+                [checklistValue]="item[options.value]" 
+                class="custom-control-input" 
+            >
+            <label class="custom-control-label radio" [for]="id+'-'+item[options.value]">{{item[options.label]}}</label>
+
+        </div>
+    </div>
+    <span class="inputVal text-danger">{{errors}}</span>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-container>
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <div class="input-group-warp" #checkBox>
+        <div *ngFor="let item of items" [ngClass]="{'custom-control-inline':vertical!='true'}"
+            class="custom-control custom-checkbox" >
+            <input style="cursor: default;" type="checkbox" [(checklist)]="value" [id]="item[options.value]" [name]="id"
+                class="custom-control-input" [attr.disabled]="true" [checklistValue]="item[options.value]">
+            <label class="custom-control-label radio" [for]="item[options.value]"
+                style="cursor: default;">{{item[options.label]}}</label>
+        </div>
+    </div>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-template>

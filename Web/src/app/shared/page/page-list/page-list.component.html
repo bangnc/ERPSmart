@@ -1,0 +1,192 @@
+<!-- <ng-container *ngIf="sideBarByModule$| async as sideBarByModule"> -->
+<header class="navbar navbar-dark primary-color double-nav" [ngClass]="{'has-key-search':hasKeySearch}">
+    <div class="float-left left">
+        <ul *ngIf="hasNavBack" class="nav navbar-nav nav-flex-icons ml-auto">
+            <li mdbWavesEffect class="nav-item" (click)="navigateBack()">
+                <a class="nav-link">
+                    <i class="mdi mdi-keyboard-backspace"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-auto middle">
+        <h5 class="text-white text-truncate">{{pageTitle}}</h5>
+    </div>
+
+    <div class="float-right right" *ngIf="showHideOption.showSearch">
+        <div class="form-inline search-form md-form form-sm">
+            <input id="page-list-key-search" [(ngModel)]="pageOption.search"
+                (keydown.enter)="searchChange($event.target.value)" class="form-control form-control-sm" type="search"
+                placeholder="Tìm kiếm" aria-label="Search" [autofocus]="true">
+            <label for="page-list-key-search" class="search-icon">
+                <i class="mdi mdi-magnify" aria-hidden="true"></i>
+            </label>
+        </div>
+    </div>
+</header>
+<div class="page-content animated fadeIn">
+    <!--Sub header chứa action bar và filer bar-->
+    <div class="sub-header" [ngClass]="{'filter-open':showHideOption.isFilterOpen}" *ngIf="!noSubHeader" >
+        <div class="filter-bar" [hidden]="!showHideOption.isFilterOpen" #filterBar>
+            <ng-template *ngTemplateOutlet="filterBarTpl?.templateRef;">
+            </ng-template>
+        </div>
+        <div class="sub-header-right" *ngIf="showHideOption.showIconFilter">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                <ng-container *ngIf="showHideOption.isFilterOpen;else filter_close_content">
+                    <button mdbWavesEffect class="btn btn-sm btn-info" (click)="filterSubmit()">
+                        <i class="mdi mdi-magnify"></i>
+                        Tìm kiếm
+                    </button>
+                    <button *ngIf="search_option" mdbWavesEffect class="btn btn-sm btn-success"
+                        (click)="filterOption()">
+                        <i class="mdi mdi-magnify-plus"></i>
+                        Thêm tiêu chí TK
+                    </button>
+                    <button mdbWavesEffect class="btn btn-sm btn-warning" (click)="filerRemove()">
+                        <i class="mdi mdi-magnify-close"></i>
+                        Xóa tìm kiếm
+                    </button>
+
+                    <button mdbWavesEffect class="btn btn-sm  btn-light" (click)="toogleFilter()">
+                        <i class="mdi mdi-close"></i>
+                        Đóng
+                    </button>
+                </ng-container>
+                <!-- <ng-template #filter_close_content>
+                    <button mdbWavesEffect class="btn btn-sm  btn-light" (click)="toogleFilter()">
+                        <i class="mdi mdi-filter-variant"></i>
+                        Tìm kiếm nâng cao
+                    </button>
+                </ng-template> -->
+            </div>
+        </div>
+        <div class="sub-header-left" *ngIf="showHideOption.showActionBar">
+            <ng-template *ngTemplateOutlet="actionBarTpl?.templateRef; context:{$implicit: itemSelected}">
+            </ng-template>
+            <div class="page-info d-flex">
+                <span class="d-none d-sm-inline">
+                    <span>{{meta.ranger.from}}</span>-
+                    <span>{{meta.ranger.to}}</span> trong số
+                    <span>{{meta.total}} bản ghi </span>
+                </span>
+            </div>
+            <ng-container *ngIf="!showHideOption.isFilterOpen">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button mdbWavesEffect class="btn btn-sm  btn-light" (click)="toogleFilter()"
+                        ngbTooltip="Tìm kiếm nâng cao" container="body" placement="top">
+                        <i class="mdi mdi-filter-variant"></i>
+                        <!-- Tìm kiếm nâng cao -->
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+    <div *ngIf="noSubHeader" class="no-sub-header">
+    </div>
+    <!--Phần hiển thị table list-->
+    <div class="custom" *ngIf="showHideOption.showTable || showHideOption.showTreeTC">
+        <div style="width: 20%; display: flex; overflow-y: auto;" *ngIf="showHideOption.showTreeTC">
+            <ng-template *ngTemplateOutlet="tcTreeContentTpl?.templateRef;">
+            </ng-template>
+        </div>
+        <div class="tbl-warp" *ngIf="showHideOption.showTable">
+            <div class="tbl-header">
+                <div *ngIf="!noCheckBox" class="tbl-col justify-content-center"
+                    style="max-width: 60px;min-width: 60px;">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="check-all-list" [checked]="isAllChecked()" (click)="checkAll($event)"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="check-all-list"></label>
+                    </div>
+                </div>
+                <div *ngIf="noCheckBox" class="tbl-col justify-content-center" style="max-width: 30px;min-width: 30px;">
+                </div>
+                <ng-template ngFor let-column [ngForOf]="columns">
+                    <div class="tbl-col" [ngClass]="getHeaderClass(column)"
+                        [ngStyle]="{'max-width':column.width,'min-width':column.width}">
+                        <span class="col-title" (click)="sortChange(column.orderby,column.title)">
+                            {{column.title}}
+                        </span>
+                        <ng-template [ngTemplateOutlet]="column.headerTpl?.templateRef"></ng-template>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="tbl-body" #tblBody>
+                <div *ngIf="createInView" class="tbl-row create-in-view">
+                    <ng-template *ngTemplateOutlet="createInViewContentTpl?.templateRef;">
+                    </ng-template>
+                </div>
+                <div tabindex="0" [id]="'row_'+item[this.keyExtractor]" (keydown)="onRowKeydown($event,item)"
+                    (dblclick)="onRowDblclick(item)" class="tbl-row" *ngFor="let item of data;let i = index"
+                    [ngClass]="{'selected':item.selected,'opened':item.opened}">
+                    <div *ngIf="!noCheckBox" class="tbl-col justify-content-center"
+                        style="max-width: 60px;min-width: 60px;">
+                        <div class="custom-control custom-checkbox">
+                            <input tabindex="-1" type="checkbox" [id]="item[this.keyExtractor]"
+                                (change)="checkItem($event)" [(ngModel)]="item.selected"
+                                class="custom-control-input check-item">
+                            <label class="custom-control-label" [for]="item[this.keyExtractor]"
+                                (dblclick)="onCheckBoxClick($event)"></label>
+                        </div>
+                    </div>
+                    <div *ngIf="noCheckBox" class="tbl-col justify-content-center"
+                        style="max-width: 30px;min-width: 30px;">
+                    </div>
+                    <ng-template ngFor let-column [ngForOf]="columns">
+                        <div class="tbl-col" [ngClass]="column.class"
+                            [ngStyle]="{'max-width':column.width,'min-width':column.width}">
+                            <ng-template
+                                *ngTemplateOutlet="column.bodyTpl?.templateRef; context:{$implicit:item,index:(i + 1)}">
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="tbl-footer">
+                <div class="page-size d-none d-sm-block">
+                    <select [(ngModel)]="pageOption.pageSize" (change)="pageSizeChange()">
+                        <option *ngFor="let pz of pageSizes" [value]="pz">{{pz}}</option>
+                    </select>bản ghi/ trang
+                </div>
+                <!-- <div class="page-info d-none d-sm-block">
+                            <span class="badge badge-pill  badge-info">
+                                <span>{{meta.ranger.from}}</span>-
+                                <span>{{meta.ranger.to}}</span>/
+                                <span>{{meta.total}} bản ghi </span>
+                            </span>
+                        </div> -->
+                <pagination class="pull-right" [(ngModel)]="pageOption.currentPage" [totalItems]="meta.total"
+                    [itemsPerPage]="pageOption.pageSize" (pageChanged)="pageChange()">
+                </pagination>
+            </div>
+        </div>
+    </div>
+    <!-- custom table -->
+    <ng-template *ngTemplateOutlet="customContentTpl?.templateRef;">
+        <div *ngIf="!showHideOption.showTable"></div>
+    </ng-template>
+
+    <ng-template *ngTemplateOutlet="tableContentTpl?.templateRef;">
+    </ng-template>
+
+    <div *ngIf="loading" class="page-loading">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+
+</div>
+<!-- </ng-container> -->

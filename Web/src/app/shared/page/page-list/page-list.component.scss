@@ -1,0 +1,36 @@
+@import "~angular-bootstrap-md/scss/core/colors";
+
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+
+    .page-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        position: relative;
+        height: 100vh;
+    }
+
+    .sub-header {
+        .sub-header-left {
+            flex: 1;
+
+        }
+    }
+
+    .custom {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        overflow-y: auto;
+    }
+
+    // header:focus-within {
+    //     .m-auto.middle{
+    //         display: none;
+    //     }
+    // }
+
+}

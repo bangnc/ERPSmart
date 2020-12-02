@@ -1,0 +1,66 @@
+<!--Jumbotron-->
+<div class="card card-image login-warp">
+  <div class="text-center rgba-white-slight login-content">
+    <!-- <div class="pt-5 mt-5"> -->
+      <div class="mainContent">
+      <!-- <img src="../../../assets/images/logo.png" alt="logo" class="logo-img"> -->      
+      <div class="col-md-12">
+        <div class="form-login">
+          <h2 class="card-title mb-4 font-bold">Đăng nhập</h2>
+          <div class="login-body" *ngIf="!loading;else loading_content">
+            <em class="login-error text-danger">{{loginError}}</em>
+            <form *ngIf="loginMode=='internal'" (ngSubmit)="f.form.valid && login()" #f="ngForm" class="login-form text-left">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <!-- <label for="username">Tên đăng nhập</label> -->
+                        <input id="username" [autofocus]="true" name="username" type="text" class="form-control" [(ngModel)]="account.username">                   
+                      </div>                          
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <!-- <label for="password">Mật khẩu</label> -->
+                        <input id="password" [autofocus]="true" name="password" type="password" class="form-control" [(ngModel)]="account.password">                   
+                      </div>   
+                </div>
+              </div>
+              <div class="missAccount">
+                <input type="checkbox" name="rememberMe" value=""> Nhớ đăng nhập<br>
+              </div>
+              <button  mdbWavesEffect class="btn btn-primary btn-block mt-3 login-button" type="submit">Đăng nhập
+                <i class="mdi mdi-arrow-right-thick"></i>
+              </button>
+
+            </form>
+            <div class="login-form" *ngIf="loginMode=='google'">
+              <div class="avatar mx-auto  mb-4">
+                <img src="../../../assets/images/default.png" alt="avatar" class="rounded-circle img-fluid">
+              </div>
+              <button mdbWavesEffect type="button" class="btn btn-gplus btn-block" (click)="loginGoogle()">Đăng nhập với Google+</button>
+            </div>
+          </div>
+          <div class="login-footer">
+            <!-- <a (click)="switchLogin()">{{loginMode=='google'?'Đăng nhập bằng tài khoản nội bộ':'Quay lại'}}</a> -->
+          </div>
+        </div>
+      </div>
+      
+      <ng-template #loading_content>
+        <div class="login-body p-4">
+          <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1 primary-color"></div>
+            <div class="sk-cube sk-cube2 primary-color"></div>
+            <div class="sk-cube sk-cube3 primary-color"></div>
+            <div class="sk-cube sk-cube4 primary-color"></div>
+            <div class="sk-cube sk-cube5 primary-color"></div>
+            <div class="sk-cube sk-cube6 primary-color"></div>
+            <div class="sk-cube sk-cube7 primary-color"></div>
+            <div class="sk-cube sk-cube8 primary-color"></div>
+            <div class="sk-cube sk-cube9 primary-color"></div>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+  

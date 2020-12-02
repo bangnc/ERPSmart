@@ -1,0 +1,12 @@
+:host {
+    .arrow-text {
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .arrow-path {
+        fill: transparent;
+        stroke: #000;
+        stroke-width: 2;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,45 @@
+<app-page-list *appPermission="true;let permission"
+    pageTitle="DANH SÁCH NHẬT KÝ ĐĂNG NHẬP" keyExtractor="id" [data]="data" [meta]="meta" [pageOption]="pageOption" [noCheckBox]=true
+    [loading]="loading" (emitNavigateBack)="navigateBack($event)" (emitChange)="papeOptionChange($event)">
+    <!-- Phần config cho filter bar -->
+    <ng-template app-page-filter let-itemSelected>
+        <form (ngSubmit)="filter()">
+            <div class="row m-2">
+                <div class="col-md-4">
+                    <app-input name="nguoi_dung_id" type="select-server" title="Người dùng" 
+                        [(ngModel)]="pageOption.filter.nguoi_dung_id" 
+                        [options]="optionNguoiDung">
+                    </app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="thoi_gian" type="date" title="Thời gian"
+                        [(ngModel)]="pageOption.filter.thoi_gian">
+                    </app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="hanh_dong" type="select" title="Hành động"
+                        [(ngModel)]="pageOption.filter.hanh_dong" [data]=HanhDongs
+                        [options]="{value:'id', label:'name'}">
+                    </app-input>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+    <!-- Phần config cho action bar -->
+    <ng-template app-page-actions let-itemSelected>
+        
+    </ng-template>
+    <!--Phần config cho table list-->
+    <app-page-column title="STT" width="60px" class="justify-content-center"class="d-none d-sm-flex">
+        <ng-template col-body let-index=index>{{idx + index}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Người dùng" width="50%" orderby='nguoi_dung.ten'>
+        <ng-template col-body let-item>{{item.nguoi_dung !== null ? item.nguoi_dung.ten : ''}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Hành động" orderby='hanh_dong'>
+        <ng-template col-body let-item>{{item.hanh_dong === 'LogIn' ? 'Đăng nhập' : 'Đăng xuất'}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Thời gian" orderby='thoi_gian'>
+        <ng-template col-body let-item>{{item.thoi_gian | date: 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</ng-template>
+    </app-page-column>
+</app-page-list>

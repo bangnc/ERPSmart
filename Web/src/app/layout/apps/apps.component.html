@@ -1,0 +1,99 @@
+<header class="navbar w-100 no-shadow">
+    <div class="float-left">
+        <a class="icon" (click)="closeNav()">
+            <i class="mdi mdi-close"></i>
+        </a>
+    </div>
+    <div class="m-auto">
+        <span class="title">
+            Ứng dụng
+        </span>
+    </div>
+    <div class="float-right">
+            <!-- <a *ngIf="isModuleOpened" (click)="closeModule()"><i class="mdi mdi-keyboard-backspace"></i></a> -->
+    </div>
+</header>
+<div class="content" *ngIf="dieu_huong$| async as dieu_huong">
+    <ul class="list-app-group" *ngIf="!isModuleOpened;else module_nav">
+        <li class="list-app-group-item" *ngFor="let item of dieu_huong;let i = index">
+            <div class="pl-2 d-flex w-100 justify-content-between">
+                <h6 class="mb-0 text-truncate">{{item.ten}}</h6>
+            </div>
+            <ul class="list-app">
+                <li class="list-app-item" *ngFor="let module of item.ds_module;let z = index" (click)="openModule(module)">
+                    <a [class]="'app-item-warp it-'+ z%9">
+                        <div class="app-icon">
+                            <div class="app-icon-warp white-text">
+                                <i [class]="getIconClass(module)"></i>
+                            </div>
+                        </div>
+                        <div class="app-title">
+                            {{module.ten}}
+                            <!-- <i class="mdi mdi-chevron-right"></i> -->
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ng-template #module_nav>
+        <ul class="list-app-group">
+            <li class="list-app-group-item">
+                <div class="pl-2 d-flex w-100 justify-content-between">
+                    <h6 class="mb-0 text-truncate">{{moduleOpen.ten}}</h6>
+                    <a (click)="closeModule()"><i class="mdi mdi-chevron-left"></i>Quay lại</a>
+                </div>
+                <ul class="list-app">
+                    <!-- {{moduleOpen|json}} -->
+                    <li *ngFor="let menu of moduleOpen.ds_dieu_huong;let z = index" class="list-app-item" [ngClass]="{'spectator' : menu.dau_phan_cach}">
+                        <a *ngIf="!menu.dau_phan_cach ;else menu_spectator" [class]="'app-item-warp it-'+ z%9"
+                            [routerLink]="menu.duong_dan" (click)="closeNav()">
+                            <div class="app-icon">
+                                <div class="app-icon-warp white-text">
+                                    <i [class]="getIconClass(menu)"></i>
+                                </div>
+                            </div>
+                            <div class="app-title">
+                                {{menu.ten}}
+                            </div>
+                        </a>
+                        <ng-template #menu_spectator>
+                            <a [class]="'app-item-warp it-'+ z%9">
+                                <div class="app-icon">
+                                    <div class="app-icon-warp white-text">
+                                        <i [class]="getIconClass(menu)"></i>
+                                    </div>
+                                </div>
+                                <div class="app-title">
+                                    {{menu.ten}}
+                                </div>
+                            </a>
+                        </ng-template>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </ng-template>
+
+    <!--
+    <ul class="nav app-list m-1" *ngFor="let item of dieu_huong;let i = index">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1 text-truncate">{{item.ten}}</h6>
+        </div>
+        
+        
+        <li class="col-4 p-1" *ngFor="let module of item.ds_module;let z = index">
+            <a class="app-item d-flex flex-column" [routerLink]="module.duong_dan" (click)="closeNav()">
+                <div class="app-icon shadow">
+                    <i [class]="module.icon"></i>
+                </div>
+                <span class="app-title">
+                    {{module.ten}}
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    -->
+</div>

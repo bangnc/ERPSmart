@@ -1,0 +1,95 @@
+<div class="page-content animated fadeIn">
+    <div class="form-inline search-form md-form form-sm" *ngIf="hasSearchBar" style="justify-content: flex-end;">
+        <input (keydown.enter)="searchChange($event.target.value)" class="form-control form-control-sm" type="text"
+            placeholder="Tìm kiếm" aria-label="Search"  [autofocus]="true">
+        <a class="search-icon">
+            <i class="mdi mdi-magnify" aria-hidden="true"></i>
+        </a>
+
+    </div>
+    <div *ngIf="hasActionBar">
+        <!--class="sub-header" -->
+
+        <div class="sub-header-right">
+            <ng-template *ngTemplateOutlet="actionBarTpl?.templateRef; context:{$implicit: itemSelected}">
+            </ng-template>
+        </div>
+
+    </div>
+    <!--Phần hiển thị table list-->
+    <div class="tbl-warp">
+        <div class="tbl-header" *ngIf="showHeader">
+            <div class="tbl-col justify-content-center" style="max-width: 60px;" *ngIf="hasCheckBox">
+                <div class="custom-control custom-checkbox" *ngIf="!isSelecOne" >
+                    <input type="checkbox" [id]="idCheckBox" [checked]="isAllChecked()" (click)="checkAll($event)"
+                        class="custom-control-input">
+                    <label class="custom-control-label" [for]="idCheckBox"></label>
+                </div>
+            </div>
+            <ng-template ngFor let-column [ngForOf]="columns">
+                <div class="tbl-col" [ngClass]="getHeaderClass(column)" [ngStyle]="{'max-width':column.width,'min-width':column.width}">
+                    <span class="col-title" (click)="sortChange(column.orderby,column.title)">
+                        {{column.title}}
+                    </span>
+                    <ng-template [ngTemplateOutlet]="column.headerTpl?.templateRef"></ng-template>
+                </div>
+            </ng-template>
+        </div>
+        <div class="tbl-body" id="tbl-body">
+            <div *ngIf="createInView" class="tbl-row create-in-view">
+                <ng-template *ngTemplateOutlet="createInViewContentTpl?.templateRef;">
+                </ng-template>
+            </div>
+            <div class="tbl-row" *ngFor="let item of data;let i = index" [ngClass]="{'selected':item.selected,'opened':item.opened}" (dblclick)=doubleClick(item)>
+                <div class="tbl-col justify-content-center" style="max-width: 60px;" *ngIf="hasCheckBox">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" [id]="item[this.keyExtractor]+'-'+idCheckBox" (change)="checkItem(item)"
+                            [(ngModel)]="item.selected" class="custom-control-input">
+                        <label class="custom-control-label" [for]="item[this.keyExtractor]+'-'+idCheckBox"></label>
+                    </div>
+                </div>
+                <ng-template ngFor let-column [ngForOf]="columns">
+                    <div class="tbl-col" [ngClass]="column.class" [ngStyle]="{'max-width':column.width,'min-width':column.width}">
+                        <ng-template
+                            *ngTemplateOutlet="column.bodyTpl?.templateRef; context:{$implicit:item,index:(i + 1)}">
+                        </ng-template>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="tbl-footer" *ngIf="hasMeta">
+            <div class="page-size">
+                <select [(ngModel)]="pageOption.pageSize" (change)="pageSizeChange()">
+                    <option *ngFor="let pz of pageSizes" [value]="pz">{{pz}}</option>
+                </select>bản ghi/ trang
+            </div>
+            <div class="page-info">
+                <span class="badge badge-pill  badge-info">
+                    <span>{{meta.ranger.from}}</span>-
+                    <span>{{meta.ranger.to}}</span>/
+                    <span>{{meta.total}} bản ghi </span>
+                </span>
+            </div>
+            <pagination class="pull-right" [(ngModel)]="pageOption.currentPage" [totalItems]="meta.total"
+                [itemsPerPage]="pageOption.pageSize" (pageChanged)="pageChange()">
+            </pagination>
+        </div>
+    </div>
+
+   <div *ngIf="loading" class="page-loading">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+</div>

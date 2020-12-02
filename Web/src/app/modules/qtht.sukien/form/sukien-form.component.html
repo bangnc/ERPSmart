@@ -1,0 +1,42 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"
+[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"  
+pageTitle="THÔNG TIN SỰ KIỆN" (emitNavigateBack)="navigateBack($event)"  >
+        <ng-container app-page-actions>
+            <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+        </ng-container>
+        <ng-container app-page-content>
+            <form action="" #positionlForm="ngForm">
+                <div class="row m-2">
+                    <div class="col-md-12">
+                        <div class="row m-2">
+                            <div class="col-md-12">
+                                <app-input [autofocus]="true" [isEditable]=editMode name="tieu_de" type="text" title="Tiêu đề (*)" [(ngModel)]="data.tieu_de" [validationMessages]="validationMessages.tieu_de"
+                                    required></app-input>
+                            </div>
+                            <div class="col-md-12">
+                                <app-input [isEditable]=editMode name="noi_dung" type="text" title="Nội dung" [(ngModel)]="data.noi_dung" ></app-input>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="tinh_trang" [disabled]=!editMode class="custom-control-input" id="tinh_trang" [(ngModel)]="data.tinh_trang">
+                                    <label class="custom-control-label" for="tinh_trang">Hiện lên trang chủ</label>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </app-page-form>

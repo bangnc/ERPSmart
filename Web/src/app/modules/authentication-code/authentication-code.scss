@@ -1,0 +1,212 @@
+:host {
+    ::ng-deep {
+        header.navbar {
+            .left {
+                img.logo-img {
+                    width: 58px;
+                    margin-left: 4px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        app-page-form .page-content .form-content {
+            display: flex;
+            padding-bottom: 0px !important;
+            background: #f4f4f4;
+
+            .home-hoivien {
+                width: 60%;
+                height: 150px;
+                background-color: transparent;
+                position: absolute;
+                z-index: 3000;
+                top: 78px;
+                left: 25px;
+            }
+
+            .dashboard {
+                margin: 1rem;
+                flex: 1;
+                display: flex;
+                flex-wrap: wrap;
+
+                .card {
+                    margin: .5rem;
+                    border-radius: 0;
+                    margin-bottom: 1rem;
+                    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
+                    .card-body {
+                        padding: .5rem;
+
+                        .card-title {
+                            font-size: 1rem;
+                            margin-bottom: .5rem;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                        >.card-title{
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                        .detail-icon {
+                            position: absolute;
+                            right: 0;
+                            top: .5rem;
+                            margin-right: .5rem;
+                            line-height: 1;
+
+                            i.mdi {
+                                font-size: 1rem;
+                            }
+                        }
+
+                        .card-warp {
+                            display: flex;
+
+                            .card-icon {
+                                i.mdi {
+                                    font-size: 4rem;
+                                    line-height: 1;
+                                }
+
+                            }
+                            >.card-icon{
+                                :hover{
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .card-content {
+                                width: 100%;
+                                padding: .5rem;
+
+                                .card-row {
+                                    display: flex;
+                                    .card-row-title{
+                                        flex: 1;
+                                        display: flex;
+                                        justify-content: flex-end;
+                                        margin: 1px;
+                                    }
+                                    .card-row-value{
+                                        flex: 1;
+                                        max-width: 30px;
+                                        min-width: 30px;
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        background: rgba(0, 0, 0, .08);
+                                        margin: 1px;
+                                    }
+                                    .card-row-left {
+                                        flex: 1;
+                                        text-align: right;
+                                        padding: 3px;
+                                        background: rgba(0, 0, 0, .08);
+                                        margin: 1px;
+                                        white-space: nowrap;
+                                        min-width: 40px;
+                                    }
+
+                                    .card-row-right {
+                                        flex: 3;
+                                        padding: 3px;
+                                        margin: 1px;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                    &.hoi-vien {
+
+                        h5,
+                        .card-icon i {
+                            color: #00C851;
+                        }
+
+                    }
+                    
+                    &.can-bo {
+
+                        h5,
+                        .card-icon i {
+                            color: #FF8800;
+                        }
+
+                    }
+                    
+                    &.can-bo-nu {
+
+                        h5,
+                        .card-icon i {
+                            color: #007E33;
+                        }
+
+                    }
+                    &.tdkt {
+
+                        h5,
+                        .card-icon i {
+                            color: #ffd600;
+                        }
+
+                    }
+                    &.to-chuc {
+
+                        h5,
+                        .card-icon i {
+                            color: #4285F4;
+                        }
+
+                        .card-content {
+                            .row.tc-2 {
+                                margin-left: calc(-4.5rem - 15px);
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                    &.van-ban {
+
+                        h5,
+                        .card-icon i {
+                            color: #33b5e5;
+                        }
+
+                    }
+                    &.danh-muc {
+
+                        h5,
+                        .card-icon i {
+                            color: #4285F4;
+                        }
+
+                    }
+                    &.quan-tri {
+
+                        h5,
+                        .card-icon i {
+                            color: #00C851;
+                        }
+
+                    }
+                }
+
+                .dashboard-left {
+                    padding: 0;
+                }
+
+                .dashboard-right {
+                    padding: 0;
+                }
+            }
+
+            >img.img-fluid {
+                padding: 20px;
+            }
+        }
+    }
+}

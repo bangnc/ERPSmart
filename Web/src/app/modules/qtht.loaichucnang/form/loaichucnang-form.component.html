@@ -1,0 +1,48 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"  
+[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"   pageTitle="THÔNG TIN LOẠI CHỨC NĂNG" (emitNavigateBack)="navigateBack($event)"  >
+    <ng-container app-page-actions>
+        <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-12">
+                            <app-input [autofocus]="true" [isEditable]=editMode name="ma" type="text" title="Mã loại chức năng (*)"
+                                [(ngModel)]="data.ma" [validationMessages]="validationMessages.ma" required></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="ten" type="text" title="Tên loại chức năng (*)"
+                                [(ngModel)]="data.ten" [validationMessages]="validationMessages.ten" required></app-input>
+                        </div>
+                        <div class="col-md-12">
+                                <app-input name="module_id" type="select" title="Module (*)" [isEditable]=editMode [(ngModel)]="data.module_id"
+                                    [data]=Modules [readModeData]="data.module" [options]="{value:'id', label:'ten', multiple:false}"
+                                    [validationMessages]="validationMessages.module_id" required>
+                                </app-input>
+                            </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="mo_ta" type="textarea" title="Thông tin khác" [(ngModel)]="data.mo_ta"></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="so_thu_tu" type="text" title="STT" [(ngModel)]="data.so_thu_tu"></app-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

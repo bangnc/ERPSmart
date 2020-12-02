@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+/*Bootrap*/
+
+//breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~angular-bootstrap-md/scss/core/colors";
+@import "~spinkit/scss/spinners/9-cube-grid.scss";
+@import "~spinkit/scss/spinners/10-fading-circle.scss";
+/*app style*/
+
+@import "variables";
+@import "layout";
+@import "header";
+@import "asidebar";
+@import "content";
+@import "sidebar";
+@import "input";
+@import "dropdown";
+@import "table";
+@import "tabs";
+@import "modal";
+@import "fab";
+@import "button";
+.tooltip{
+    min-width: 80px;
+}
+.modal-xl {
+    .modal-dialog{
+        max-width: 90vw;
+    }
+}
+
+// .tooltip-inner{
+//     // background-color: #4285f4;
+//     min-width: 200px!important;
+//     table{
+//         width: 100%;
+//         tr{
+//             td{
+//                 text-align: left;
+//                 p{
+//                     margin: 0;
+//                     cursor: pointer;
+//                 }
+//                 &:first-child{
+//                     border-right: 1px solid #7c7c7c;
+//                     width: 103px;
+//                 }
+//                 &:last-child{
+//                     text-align: right;
+//                 }
+//             }
+//             &:first-child{
+//                 border-bottom: 1px solid #7c7c7c;
+//             }
+//         }
+//     }
+// }

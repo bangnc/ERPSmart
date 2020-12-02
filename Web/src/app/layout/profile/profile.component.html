@@ -1,0 +1,112 @@
+<header class="navbar w-100 no-shadow">
+    <div class="float-left">
+        <a class="icon" (click)="closeNav()">
+            <i class="mdi mdi-close"></i>
+        </a>
+    </div>
+    <div class="m-auto">
+        <span class="title">
+            Thông tin tài khoản
+        </span>
+    </div>
+    <div class="float-right">
+        <!-- <ul class="nav nav-actions">
+                <li *ngIf=!editMode  class="action-icon nav-item" container="body" ngbTooltip="Sửa" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-info" (click)="edit()">
+                        <i class="mdi mdi-account-edit"></i>
+                    </a>
+                </li>
+                <li *ngIf=editMode  class="action-icon nav-item" container="body" ngbTooltip="Lưu" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-primary" (click)="save()">
+                        <i class="mdi mdi-content-save"></i>
+                    </a>
+                </li>
+                <li *ngIf=editMode  class="action-icon nav-item" container="body" ngbTooltip="Hủy" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-warning" (click)="cancel()">
+                        <i class="mdi mdi-cancel"></i>
+                    </a>
+                </li>
+            </ul> -->
+    </div>
+</header>
+<div class="content">
+    <form #profileForm="ngForm">
+        <div class="card testimonial-card">
+            <div class="card-profile text-center">
+                <img alt="" class="card-img-top" src="../../../assets/images/home_banner.jpg">
+                <div class='card-block'>
+                    <img alt="" class="card-img-profile" [src]="profile.img_data?profile.img_data.file_data:''"
+                        src-fallback="../../../assets/images/default_profile.png?v1.0">
+                    <!-- <img alt="" class="card-img-profile" src="" src-fallback="../../../assets/images/default.png" > -->
+                </div>
+
+                <app-input *ngIf=editMode name="avatar" type="file" icon="mdi mdi-camera-party-mode" [(ngModel)]="profile.img_data"
+                    typeFile="jpg,jpeg,png,gif,bmp" moduleFile="user" container="body" ngbTooltip="Chọn ảnh đại diện">
+                </app-input>
+            </div>
+            <div class="col-md-12 m-1 text-center" *ngIf=!editMode>
+                <h6 class="font-weight-bold text-uppercase">{{profile.ten_hien_thi}}</h6>
+                <label class="font-italic">{{profile.tai_khoan}}</label><br />
+                <button class="btn btn-sm btn-danger" (click)="logout()" mdbWavesEffect>
+                    <i class="mdi mdi-logout-variant"></i> 
+                    Đăng xuất
+                </button>
+                <!-- <ul class="nav nav-actions justify-content-center">
+                    <li class="action-icon nav-item" container="body" ngbTooltip="Đổi mật khẩu" placement="bottom">
+                        <a mdbWavesEffect class="nav-link text-warning" (click)="changePass()">
+                            <i class="mdi mdi-lock-reset"></i>
+                        </a>
+                    </li>
+                    <li class="action-icon nav-item" container="body" ngbTooltip="Đăng xuất" placement="bottom">
+                        <a mdbWavesEffect class="nav-link text-danger" (click)="logout()">
+                            <i class="mdi mdi-logout-variant"></i>
+                        </a>
+                    </li>
+
+                </ul> -->
+            </div>
+            <div class="col-md-12 m-1 toChucSty">
+                <app-input name="to_chuc" title="Tổ chức" type="select" [isEditable]=editMode [(ngModel)]="profile.to_chuc_id"
+                    [readModeData]="profile.to_chuc" [options]="{value:'id',label:'ten_day_du', multiple:false}"></app-input>
+            </div>
+            <div class="col-md-12 m-1 toChucSty">
+                <app-input name="phong_ban" title="Phòng ban" type="select" [isEditable]=editMode [(ngModel)]="profile.phong_ban_id"
+                    [readModeData]="profile.phong_ban" [options]="{value:'id',label:'ten', multiple:false}"></app-input>
+            </div>
+            <!-- <div class="col-md-12 m-1" *ngIf=editMode>
+                <app-input name="first_name" type="text" icon="mdi mdi-account" [(ngModel)]="profile.first_name" 
+                required [validationMessages]="validationMessages.first_name">
+                </app-input>
+            </div>
+            <div class="col-md-12 m-1" *ngIf=editMode>
+                <app-input name="last_name" type="text" icon="mdi mdi-account-box" [(ngModel)]="profile.last_name" 
+                required [validationMessages]="validationMessages.last_name">
+                </app-input>
+            </div>
+            <div class="col-md-12 m-1">
+                <app-input name="gender" type="radio-group" [isEditable]=editMode icon="mdi mdi-gender-male-female" 
+                        [data]="Genders" [(ngModel)]="profile.gender" [options]="{value:'id',label:'name'}">
+                </app-input>
+            </div>
+            <div class="col-md-12 m-1">
+                <app-input name="BirthDate"  type="date"  [isEditable]=editMode icon="mdi mdi-calendar-range" 
+                [(ngModel)]="profile.BirthDate"></app-input>
+            </div>
+            <div class="col-md-12 m-1" *ngIf=editMode>
+                <app-input name="email"  type="email"  icon="mdi mdi-email" [(ngModel)]="profile.email" 
+                required [validationMessages]="validationMessages.email"></app-input>                
+            </div>
+            <div class="col-md-12 m-1">
+                <app-input name="phone" type="text" [isEditable]=editMode icon="mdi mdi-cellphone-basic"  [(ngModel)]="profile.phone"></app-input>        
+            </div>
+            <div class="col-md-12 m-1">
+                <app-input name="department_id" type="select" [isEditable]=editMode icon="mdi mdi-cards-club"  [(ngModel)]="profile.department_id"  
+                [data]=Departments [readModeData]="profile.DepartmentSub" [options]="{value:'id',label:'name', multiple:false}"></app-input>        
+            </div>
+            <div class="col-md-12 m-1">
+                <app-input name="position_id" type="select" [isEditable]=editMode icon="mdi mdi-cards-spade" [(ngModel)]="profile.position_id" 
+                [data]=Positions [readModeData]="profile.PositionSub"  [options]="{value:'id',label:'name',multiple:false}"></app-input>        
+            </div> -->
+        </div>
+    </form>
+</div>

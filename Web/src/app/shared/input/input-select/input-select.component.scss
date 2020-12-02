@@ -1,0 +1,121 @@
+@import "../../../../styles/scss/variables";
+:host {
+    ::ng-deep {
+        height: 36.8px;
+        .ng-select {
+            padding-bottom: 0em;
+            top: -19px;
+            &.ng-invalid.ng-touched {
+                ~ span.text-danger{
+                    visibility: visible !important;
+                }
+                .ng-select-container {
+                    &::after {
+                        border-bottom: 2px solid #ff3547;
+                    }
+                }
+            }
+            .ng-spinner-loader{
+                margin-top: 24px;
+            }
+            .ng-select-container {
+                &::after {
+                    border-bottom: 1px solid #ced4da;
+                }
+                .ng-value-container {
+                    padding-top: 5px;
+                    padding-bottom: 3px;
+                    .ng-placeholder {
+                        color: black;
+                        font-size: $app-font-size;;
+                        transition: 0.2s ease-out;
+                        top: 1.8rem;
+                    }
+                }
+                &.ng-has-value {
+                    .ng-value-container {
+                        .ng-placeholder {
+                            font-size: $app-font-size;;
+                            transform: translateY(-120%);
+                            -webkit-transform: translateY(-120%);
+                        }
+                    }
+                }
+                .ng-value {
+                    .ng-value-label {
+                        color: black;
+                        font: 400 13.3333px Arial;
+                        font-size: $app-font-size;;
+                    }
+                }
+            }
+            .ng-dropdown-panel{
+                &.ng-select-bottom{
+                    top:100%
+                }
+            }
+            &.ng-select-focused {
+                .ng-select-container {
+                    &::after {
+                        border-bottom: 2px solid #4285f4
+                    }
+                    .ng-value-container {
+                        .ng-placeholder {
+                            color: #4285f4;
+                            font-size: $app-font-size;;
+                            transform: translateY(-120%);
+                            -webkit-transform: translateY(-120%);
+                        }
+                    }
+                }
+            }
+            &.ng-select-single {
+                .ng-select-container {
+                    .ng-value-container {
+                        .ng-value {
+                            padding-top: 10px;
+                        }
+                    }
+                }
+            }
+            &.ng-select-multiple {
+                .ng-select-container {
+                    .ng-value-container {
+                        padding-top: .5rem;
+                        .ng-value {
+                            border: none;
+                            background-color: #33b5e5;
+                            padding: 0px 4px;
+                            .ng-value-icon {
+                                color: #fff;
+                                font-size: $app-font-size;;
+                                &:hover {
+                                    color: #4285f4;
+                                }
+                            }
+                            .ng-value-label {
+                                font-size: $app-font-size;;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .prefix~.ng-select {
+            margin-left: 2.5rem;
+            width: calc(100% - 2.5rem);
+        }
+        // ng-select.ng-invalid.ng-touched .ng-select-container {
+        //     border-color: #dc3545;
+        //     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+        // }
+    }
+    &[required] {
+        ::ng-deep {
+            .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+                color: #ff3547
+            }
+        }
+    }
+}

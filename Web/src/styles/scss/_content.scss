@@ -1,0 +1,29 @@
+.content {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 14px;
+        height: 18px;
+    }
+    &::-webkit-scrollbar-button,
+    &::-webkit-scrollbar-corner {
+        background: #fff;
+        cursor: pointer;
+        display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #c8c8c8;
+    }
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-thumb:hover {
+        border-radius: 6px;
+        border: solid 2px transparent;
+        background-clip: content-box;
+    }
+    &::-webkit-scrollbar-track {
+        background: #f4f4f4;
+    }
+}

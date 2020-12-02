@@ -1,0 +1,106 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"  
+[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"   pageTitle="THÔNG TIN NHÓM NGƯỜI DÙNG" (emitNavigateBack)="navigateBack($event)"  >
+    <ng-container app-page-actions>
+        <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button *ngIf="permission[perms.DELETE] && !editMode && !isNhomHoiDongThiDua" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-12">
+                            <app-input [autofocus]="true" [isEditable]="editMode && !isNhomHoiDongThiDua" name="ma" type="text" title="Mã (*)"
+                                [(ngModel)]="data.ma" [validationMessages]="validationMessages.ma" required></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]="editMode && !isNhomHoiDongThiDua" name="ten" type="text" title="Tên nhóm (*)"
+                                [(ngModel)]="data.ten" [validationMessages]="validationMessages.ten" required></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input [isEditable]="editMode && !isNhomHoiDongThiDua" name="mo_ta" type="textarea" title="Thông tin khác" [(ngModel)]="data.mo_ta"></app-input>
+                        </div>
+                        <div class="col-md-12">
+                            <app-input name="ds_vai_tro_id" type="select" title="Vai trò (*)" [isEditable]=editMode [(ngModel)]="data.ds_vai_tro_id"
+                                [data]=VaiTros [readModeData]="data.ds_vai_tro" [options]="{value:'id', label:'ten', multiple:true}"
+                                [validationMessages]="validationMessages.ds_vai_tro_id" required>
+                            </app-input>
+                        </div>
+                        <div class="col-md-12" style="padding-top: 20px;" *ngIf="isNhomHoiDongThiDua">
+                            <p style="font-size: 13px; font-style: italic; font-weight: 100; margin: 0;"><span style="font-size: 13px; font-style: initial; font-weight: bold;">Ghi chú: </span>Nhóm Hội đồng thi đua khen thưởng chỉ được phép thay đổi vai trò và người dùng cấp TW</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-12" style="margin-top: 20px;">
+                            <label class="qt-title">DANH SÁCH NGƯỜI DÙNG</label>
+                            <div class="btnRight" style="text-align: right;">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <app-table keyExtractor="id" 
+                                [data]="ds_nguoi_dung_by_nhom" 
+                                [hasCheckBox]=false 
+                                [meta]="meta"
+                                [pageOption]="pageOption"
+                                (emitChange)="papeOptionChange($event)" 
+                                [hasActionBar]=true
+                                class="tbl-quatrinh"
+                                [loading]="loading"> 
+                                <!--Phần config cho table list-->
+                                <app-page-column title="STT" width="60px">
+                                    <ng-template col-body let-index=index>{{idx + index}}</ng-template>
+                                </app-page-column>
+                                <app-page-column title="Tài khoản">
+                                    <ng-template col-body let-item>{{item.tai_khoan}}</ng-template>
+                                </app-page-column>
+                                <app-page-column title="Họ và tên">
+                                    <ng-template col-body let-item>{{item.ten}}</ng-template>
+                                </app-page-column>
+                                <app-page-column title="Đơn vị" >
+                                    <ng-template col-body let-item>{{(item.to_chuc !== null && item.to_chuc !== undefined) ? item.to_chuc.ten : ''}}</ng-template>
+                                </app-page-column>
+                                <app-page-column title="" class="col-action" width="60px">
+                                    <ng-template col-header>
+                                        <ul class="nav nav-actions">
+                                            <li class="action-icon nav-item" container="body" ngbTooltip="Thêm người dùng" *ngIf="permission[perms.EDIT] && editMode"
+                                                placement="bottom">
+                                                <a mdbWavesEffect class="nav-link text-white" (click)="showModal()">
+                                                    <i class="mdi mdi-plus"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </ng-template>
+                                    <ng-template col-body let-item>
+                                        <ul class="nav nav-actions">
+                                            <li class="action-icon nav-item" *ngIf="permission[perms.EDIT] && editMode" container="body"
+                                                ngbTooltip="Bỏ khỏi danh sách" placement="bottom">
+                                                <a mdbWavesEffect class="nav-link text-danger" (click)="deleteNguoiDung(item)">
+                                                    <i class="mdi mdi-delete-outline"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </ng-template>
+                                </app-page-column>
+                            </app-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

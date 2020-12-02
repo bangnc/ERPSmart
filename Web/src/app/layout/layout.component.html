@@ -1,0 +1,66 @@
+<ng-container >
+    <div class="app-content">
+        <!-- <div class="app-content" > -->
+        <router-outlet></router-outlet>
+    </div>
+    <div class="app-nav">
+        <ul class="nav">
+            <li class="nav-item" routerLinkActive="active">
+                <a tabindex="-1" class="nav-link" routerLink="/home">
+                    <div class="icon">
+                        <i class="mdi mdi-home"></i>
+                    </div>
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active' : navActived=='Apps'}">
+                <a tabindex="-1" class="nav-link" (click)="toggleNavItem('Apps')">
+                    <div class="icon">
+                        <i class="mdi mdi-apps"></i>
+                    </div>
+                    <span>Ứng dụng</span>
+                </a>
+            </li>
+            <!-- <li class="nav-item" [ngClass]="{'active' : navActived=='Notifications'}">
+                <a class="nav-link" (click)="toggleNavItem('Notifications')">
+                    <div class="icon">
+                        <i class="mdi mdi-bell"></i>
+                        <label class="badge badge-danger">{{unread}}</label>
+                    </div>
+                    <span>Thông báo</span>
+
+                </a>
+            </li> -->
+            <li class="nav-item" [ngClass]="{'active' : navActived=='Profile'}">
+                <a tabindex="-1" class="nav-link" (click)="toggleNavItem('Profile')">
+                    <div class="icon">
+                        <i class="mdi mdi-account"></i>
+                    </div>
+                    <span>Tài khoản</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="aside-bar">
+        <app-apps class="aside-wrapper" (emitClose)="closeNav()" [hidden]="navActived!='Apps'"></app-apps>
+        <app-profile class="aside-wrapper" (emitClose)="closeNav()" [hidden]="navActived!='Profile'"></app-profile>
+        <!-- <app-notification class="aside-wrapper" [notifications]="notifications" (emitClose)="closeNav()" [hidden]="navActived!='Notifications'"></app-notification> -->
+    </div>
+    <div class="backdrop sidebar-overlay-open" (click)="closeNav()"></div>
+</ng-container>
+<ng-template #loading_content>
+    <div class="app-content">
+        <div class="sk-cube-grid justify-content-center align-self-center">
+            <div class="sk-cube sk-cube1 primary-color"></div>
+            <div class="sk-cube sk-cube2 primary-color"></div>
+            <div class="sk-cube sk-cube3 primary-color"></div>
+            <div class="sk-cube sk-cube4 primary-color"></div>
+            <div class="sk-cube sk-cube5 primary-color"></div>
+            <div class="sk-cube sk-cube6 primary-color"></div>
+            <div class="sk-cube sk-cube7 primary-color"></div>
+            <div class="sk-cube sk-cube8 primary-color"></div>
+            <div class="sk-cube sk-cube9 primary-color"></div>
+        </div>
+    </div>
+</ng-template>

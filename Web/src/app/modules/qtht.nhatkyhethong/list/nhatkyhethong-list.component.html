@@ -1,0 +1,88 @@
+<app-page-list
+*appPermission="true;let permission" 
+[noCheckBox]="!permission[perms.DELETE]" 
+pageTitle="NHẬT KÝ HỆ THỐNG" 
+keyExtractor="id"  
+[data]="data"
+[meta]="meta"
+[pageOption]="pageOption"
+[loading]="loading" 
+(emitNavigateBack)="navigateBack($event)"
+(emitChange)="papeOptionChange($event)"
+(emitRowDbClick)="clickXemChiTiet($event)">
+    <!-- Phần config cho filter bar -->
+    <ng-template app-page-filter let-itemSelected>
+        <form (ngSubmit)="filter()">
+            <div class="row m-2">
+
+                <div class="col-md-4">
+                    <app-input name="to_chuc_id"  [autofocus]="true" type="select-server" title="Hội" [(ngModel)]="pageOption.filter.to_chuc_id"  
+                         [options]="{value:'id',label:'ten', apiUrl:urlToChuc,sort:{ten_day_du:1}}">   
+                    </app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="name" type="date" title="Từ ngày" [(ngModel)]="pageOption.filter.ngay_tao_tu_ngay"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="name" type="date" title="Đến ngày" [(ngModel)]="pageOption.filter.ngay_tao_den_ngay"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="name" type="select-server" placeholder="Người thực hiện" [(ngModel)]="pageOption.filter.nguoi_thuc_hien_id" 
+                        [options]="{value:'id', label:'ten', apiUrl:'/api/qtht-nguoidung',sort:{ten:1}}">   
+                    </app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="name" type="select" title="Hành động"
+                    [data]="ListAction"
+                    [options]="{value:'id',label:'ten'}"
+                    [(ngModel)]="pageOption.filter.hanh_dong"></app-input>
+                </div>
+                <div class="col-md-4">
+                    <app-input name="name" type="text" title="Nội dung" [(ngModel)]="pageOption.filter.noi_dung"></app-input>
+                </div>
+                <button type="submit" style="display:none"></button>
+            </div>
+        </form>
+    </ng-template>
+    <!-- Phần config cho action bar -->
+    <ng-template app-page-actions let-itemSelected>
+        <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT]" (click)="create()">
+            <i class="mdi mdi-plus"></i>
+            Thêm mới
+        </button>
+        <button mdbWavesEffect class="btn btn-sm btn-danger" *ngIf="permission[perms.DELETE] && itemSelected.length > 0" (click)="deletes(itemSelected)">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-template>
+    <!--Phần config cho table list-->
+    <app-page-column title="STT" width="60px" class="justify-content-center"class="d-none d-sm-flex">
+        <ng-template col-body let-index=index>{{idx + index}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Thời gian" orderby='ngay_tao'>
+        <ng-template col-body let-item>{{item.ngay_tao | date: 'dd/MM/yyyy HH:mm'}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Người thực hiện" orderby='nguoi_thuc_hien.ten'>
+        <ng-template col-body let-item>{{item.nguoi_thuc_hien.ten}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Đơn vị thực hiện" orderby='to_chuc.ten'>
+        <ng-template col-body let-item>{{item.to_chuc.ten}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Hành động" orderby='hanh_dong'>
+        <ng-template col-body let-item>{{item.hanh_dong}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Nội dung" orderby='noi_dung'>
+        <ng-template col-body let-item>{{item.noi_dung}}</ng-template>
+    </app-page-column>
+    <app-page-column title="" class="col-action" width="100px">
+        <ng-template col-body let-item>
+            <ul class="nav nav-actions">
+                <li  class="action-icon nav-item" container="body" ngbTooltip="Xem lịch sử" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-info" (click)="clickXemChiTiet(item)">
+                        <i class="mdi mdi-history"></i>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </app-page-column>
+</app-page-list>

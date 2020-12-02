@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using ERP_SMART.Business.Utils.Unity;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
@@ -17,7 +18,10 @@ namespace ERP_SMART.API
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            // my config
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);    
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
             MyUnity.RegisterService();

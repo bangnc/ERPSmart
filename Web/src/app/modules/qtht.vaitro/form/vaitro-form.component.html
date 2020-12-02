@@ -1,0 +1,191 @@
+<app-page-form *appPermission="true;let permission" [loading]="loading"
+    [noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]" pageTitle="THÔNG TIN VAI TRÒ"
+    (emitNavigateBack)="navigateBack($event)">
+    <ng-container app-page-actions>
+        <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect
+            class="btn btn-sm btn-primary" (click)="save()">
+            <i class="mdi mdi-content-save"></i>
+            Lưu lại
+        </button>
+        <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning"
+            (click)="update()">
+            <i class="mdi mdi-pencil-box-outline"></i>
+            Sửa
+        </button>
+        <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger"
+            (click)="delete()">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-6">
+                    <app-input [autofocus]="true" [isEditable]=editMode name="ma" type="text" title="Mã (*)"
+                        [(ngModel)]="data.ma" [validationMessages]="validationMessages.ma" required></app-input>
+                </div>
+                <div class="col-md-6">
+                    <app-input [isEditable]=editMode name="ten" type="text" title="Tên (*)" [(ngModel)]="data.ten"
+                        [validationMessages]="validationMessages.ten" required></app-input>
+                </div>
+                <div class="col-md-12">
+                    <app-input [isEditable]=editMode name="mo_ta" type="textarea" title="Thông tin khác"
+                        [(ngModel)]="data.mo_ta"></app-input>
+                </div>
+                <ngb-tabset>
+                    <ngb-tab title="Phân quyền thanh điều hướng" id="tabMenu">
+                        <ng-template ngbTabContent>
+                            
+                        
+                           
+                            
+                            <div class="row m-3">
+                                <div class="col-md-12">
+                                    <div class="tbl-warp">
+                                            <div class="tbl-col">
+                                                    <a (click)="expandNav()"><i class="mdi mdi-layers-plus"></i>Mở rộng</a>
+                                                    <a class="pl-3" (click)="collapseNav()"><i class="mdi mdi-layers-outline"></i>Thu gọn</a>
+                            
+                                            </div>
+                                        <div class="tbl-body" *ngFor="let item of Modules">
+                                            <div class="tbl-row">
+                                                <div class="tbl-col" style="justify-content: left; margin-left: 2rem;">
+                                                    <i class="mdi"
+                                                        [ngClass]="{'mdi-layers-outline': !item.visible, 'mdi-layers-plus': item.visible}"
+                                                        (click)="toggleItem(item)"></i>
+                                                    {{item.ten}}
+                                                </div>
+                                                <div class="tbl-col">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="module_{{item.id}}"
+                                                            name="module_{{item.id}}" [disabled]="!editMode"
+                                                            type="checkbox" [(checklist)]="data.ds_module_dieu_huong_id"
+                                                            checklistValue={{item.id}}
+                                                            (change)="chonModule($event, item)">
+                                                        <label class="custom-control-label"
+                                                            for="module_{{item.id}}"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-container *ngIf="!item.visible">
+                                                <div *ngFor="let itemDH of item.ds_dieu_huong" class="tbl-row">
+                                                    <div class="tbl-col" style="justify-content: left; margin-left: 4rem;">
+                                                        {{itemDH.ten}}
+                                                    </div>
+                                                    <div class="tbl-col" style="margin-left: -2rem">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input"
+                                                                id="dieu_huong_{{itemDH.id}}"
+                                                                name="dieu_huong_{{itemDH.module_id}}"
+                                                                [disabled]="!editMode" type="checkbox"
+                                                                [(checklist)]="data.ds_dieu_huong_id"
+                                                                checklistValue={{itemDH.id}}
+                                                                (change)="chonDieuHuong($event, item)">
+                                                            <label class="custom-control-label"
+                                                                for="dieu_huong_{{itemDH.id}}"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Phân quyền chức năng" id="tabObj">
+                        <ng-template ngbTabContent>
+                                
+                            <div class="row m-3">
+                                <div class="col-md-12">
+                                    <div class="tbl-warp">
+                                            <div class="tbl-col">
+                                                    <a (click)="expandModule()"><i class="mdi mdi-layers-plus"></i>Mở rộng</a>
+                                                    <a class="pl-3" (click)="collapseModule()"><i class="mdi mdi-layers-outline"></i>Thu gọn</a>
+                            
+                                            </div>
+                                        <div class="tbl-body" *ngFor="let item of Modules">
+                                            <div class="tbl-row">
+                                                <div class="tbl-col" style="justify-content: left; margin-left: 2rem;">
+                                                    <i class="mdi"
+                                                        [ngClass]="{'mdi-layers-outline': !item.visible, 'mdi-layers-plus': item.visible}"
+                                                        (click)="toggleItem(item)"></i>
+                                                    {{item.ten}}
+                                                </div>
+                                                <div class="tbl-col">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="module_{{item.id}}"
+                                                            name="module_{{item.id}}" [disabled]="!editMode"
+                                                            type="checkbox" [(checklist)]="data.ds_module_chuc_nang_id"
+                                                            checklistValue={{item.id}}
+                                                            (change)="chonModuleForChucNang($event, item)">
+                                                        <label class="custom-control-label"
+                                                            for="module_{{item.id}}"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-container *ngIf="!item.visible">
+                                                <div *ngFor="let itemLCN of item.ds_loai_chuc_nang" class="tbl-body">
+                                                    <div class="tbl-row">
+                                                        <div class="tbl-col"
+                                                            style="justify-content: left; margin-left: 4rem;">
+                                                            <i class="mdi"
+                                                                [ngClass]="{'mdi-layers-outline': itemLCN.visible, 'mdi-layers-plus': !itemLCN.visible}"
+                                                                (click)="toggleItem(itemLCN)"></i>
+                                                            {{itemLCN.ten}}
+                                                        </div>
+                                                        <div class="tbl-col" style="margin-left: -2rem">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input"
+                                                                    id="loai_chuc_nang_{{itemLCN.id}}"
+                                                                    name="loai_chuc_nang_{{itemLCN.module_id}}"
+                                                                    [disabled]="!editMode" type="checkbox"
+                                                                    [(checklist)]="data.ds_loai_chuc_nang_id"
+                                                                    checklistValue={{itemLCN.id}}
+                                                                    (change)="chonLoaiChucNang($event, item, itemLCN)">
+                                                                <label class="custom-control-label"
+                                                                    for="loai_chuc_nang_{{itemLCN.id}}"></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <ng-container *ngIf="itemLCN.visible">
+                                                        <div class="tbl-row"
+                                                            *ngFor="let subItem of itemLCN.ds_chuc_nang; let idx = index">
+                                                            <div class="tbl-col"
+                                                                style="justify-content: left; margin-left: 6rem;">
+                                                                {{subItem.ten}}
+                                                            </div>
+                                                            <div class="tbl-col" style="margin-left: -4rem">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input class="custom-control-input"
+                                                                        id="chuc_nang_{{subItem.id}}"
+                                                                        name="chuc_nang_{{subItem.id}}"
+                                                                        [disabled]="!editMode" type="checkbox"
+                                                                        [(checklist)]="data.ds_chuc_nang_id"
+                                                                        checklistValue={{subItem.id}}
+                                                                        (change)="chonChucNang($event, item, itemLCN)">
+                                                                    <label class="custom-control-label"
+                                                                        for="chuc_nang_{{subItem.id}}"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-container>
+
+
+
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

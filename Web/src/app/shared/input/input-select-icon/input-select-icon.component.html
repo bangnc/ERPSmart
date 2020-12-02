@@ -1,0 +1,26 @@
+<ng-container *ngIf="isEditable;else readMode">
+    <ng-select [openOnEnter]=false dropdownPosition="bottom" [items]="data" [id]="id" [placeholder]="placeholder"
+        (change)="change(value)" [multiple]="multiple" [formControl]="frmCtr">
+        <ng-template ng-option-tmp ng-label-tmp let-item="item" let-index="index">
+            <i class="prefix" [class]="item"></i>
+            {{item}}
+        </ng-template>
+    </ng-select>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-container>
+<ng-template #readMode>
+    <p *ngIf="!multiple" type="text" [id]="id" class="form-control form-control-static" #select>
+
+        <ng-container *ngIf="value!==null && value !='';else noValue">
+            <i class="prefix" [class]="readModeData"></i>
+            {{readModeData?readModeData:null}}</ng-container>
+        <ng-template #noValue>-&nbsp;</ng-template>
+    </p>
+    <p *ngIf="multiple" type="text" [id]="id" class="form-control form-control-static" #select>
+        <ng-container *ngIf="readModeData.length == 0">-&nbsp;</ng-container>
+        <ng-container *ngFor="let item of readModeData">
+            <i class="prefix" [class]="item"></i>
+            {{item}} &nbsp;</ng-container>
+    </p>
+    <label [for]="id" class="active">{{title ? title : placeholder}}</label>
+</ng-template>

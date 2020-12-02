@@ -1,0 +1,12 @@
+<div class="fab" [ngClass]="{'active':isActive}">
+    <span class="fab-action-button text-white" (click)="toogleActive()">
+        <i class="mdi mdi-menu"></i>
+    </span>
+    <ul class="fab-buttons">
+        <li class="fab-buttons__item" *ngFor="let item of items; let i = index">
+            <a [routerLink]="item.duong_dan" class="fab-buttons__link" [attr.data-tooltip]="item.ten">
+                <i class="icon-material" [ngClass]="item.icon||'mdi mdi-view-list'"></i>
+            </a>
+        </li>      
+    </ul>
+</div>

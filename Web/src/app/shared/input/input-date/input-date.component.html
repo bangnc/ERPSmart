@@ -1,0 +1,51 @@
+<div *ngIf="isEditable;else readMode" class="input-group" ngbDropdown #dPick="ngbDropdown" autoClose="outside"  [placement]="['bottom-left']">
+    <div *ngIf="icon" class="input-group-prepend prefix">
+        <i [class]="icon"></i>
+    </div>
+    <input type="text"
+    appInputActiveDirective     
+    ngbDropdownAnchor
+    [textMask]="maskOption" 
+    [attr.data-error]="errors" 
+    data-success=" " 
+    [id]="id" 
+    [placeholder]="getPlaceholder()"
+    class="form-control validate" 
+    [formControl]="frmCtr"
+    [ngClass]="{'autofocus': autofocus}"
+    [autofocus]="autofocus">
+    <div class="input-group-append" *ngIf="mode!=='month'">
+        <a class="input-group-text" (click)="$event.stopPropagation(); toogleDPick(dPick,dp);">
+            <i class="mdi mdi-calendar"></i>
+        </a>
+    </div>
+    <div ngbDropdownMenu>
+        <div class="date-picker" *ngIf="mode!=='month'">
+            <ngb-datepicker #dp [(ngModel)]="date" (select)="updateDateValue($event,dPick)"  [minDate]="minDate"></ngb-datepicker>
+        </div>
+        <div class="time-picker" *ngIf="mode==='time'">
+            <div class="col-md-12">
+                    <hr/>
+            </div>
+            
+            <ngb-timepicker [(ngModel)]="time" [minuteStep]="15"></ngb-timepicker>
+            <div class="picker-action">
+                <button type="button" class="btn btn-sm btn-danger" (click)="dPick.close()">Hủy</button>
+                <button type="button" class="btn btn-sm btn-primary" (click)="updateDateTimeValue(date,time,dPick)">Chọn</button>
+            </div>
+        </div>
+        <div class="month-picker" *ngIf="mode==='month'">           
+        </div>
+    </div>
+
+    <label [for]="id">{{title}}</label>
+
+</div>
+<ng-template #readMode>
+    <i *ngIf="icon" class="prefix" [class]="icon + ' prefix'"></i>
+    <p type="text" [id]="id" class="form-control form-control-static">
+        <ng-container *ngIf="value;else noValue">{{value}}</ng-container>
+        <ng-template #noValue>-&nbsp;</ng-template>
+    </p>
+    <label [for]="id" class="active">{{title}}</label>
+</ng-template>

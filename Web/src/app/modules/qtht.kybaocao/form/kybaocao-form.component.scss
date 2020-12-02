@@ -1,0 +1,11 @@
+:host {
+    .input-ngay-sinh{
+        display: inline-block;
+        width: calc(( 100% - 100px ) / 3 );
+    }
+    .div-ho-khau{
+        display: inline-block;
+        width: calc(( 100% - 140px ) / 3.1 );
+        margin-right: 5px;
+    }
+}

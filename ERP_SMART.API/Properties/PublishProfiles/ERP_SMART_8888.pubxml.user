@@ -83,25 +83,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2020 13:23:24</publishTime>
     </File>
     <File Include="bin/ERP_SMART.API.dll">
-      <publishTime>12/02/2020 15:16:20</publishTime>
+      <publishTime>12/02/2020 16:34:36</publishTime>
     </File>
     <File Include="bin/ERP_SMART.API.pdb">
-      <publishTime>12/02/2020 15:16:20</publishTime>
+      <publishTime>12/02/2020 16:34:36</publishTime>
     </File>
     <File Include="bin/ERP_SMART.Business.dll">
-      <publishTime>12/02/2020 15:16:18</publishTime>
+      <publishTime>12/02/2020 13:28:04</publishTime>
     </File>
     <File Include="bin/ERP_SMART.Business.pdb">
-      <publishTime>12/02/2020 15:16:18</publishTime>
+      <publishTime>12/02/2020 13:28:04</publishTime>
     </File>
     <File Include="bin/ERP_SMART.Data.dll">
-      <publishTime>12/02/2020 15:16:16</publishTime>
+      <publishTime>12/02/2020 13:28:04</publishTime>
     </File>
     <File Include="bin/ERP_SMART.Data.dll.config">
       <publishTime>12/01/2020 11:34:36</publishTime>
     </File>
     <File Include="bin/ERP_SMART.Data.pdb">
-      <publishTime>12/02/2020 15:16:16</publishTime>
+      <publishTime>12/02/2020 13:28:04</publishTime>
     </File>
     <File Include="bin/Fissoft.EntityFramework.Fts.dll">
       <publishTime>07/18/2017 23:35:10</publishTime>
@@ -118,8 +118,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>12/02/2020 13:23:28</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Cors.dll">
+      <publishTime>09/08/2020 20:51:20</publishTime>
+    </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>12/02/2020 13:23:28</publishTime>
+      <publishTime>09/08/2020 20:51:20</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
       <publishTime>12/02/2020 13:23:28</publishTime>
@@ -310,8 +313,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/System.Threading.Tasks.Extensions.dll">
       <publishTime>10/26/2020 14:50:46</publishTime>
     </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>11/28/2018 12:58:44</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>12/02/2020 13:23:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>11/28/2018 13:01:26</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
       <publishTime>12/02/2020 13:23:24</publishTime>
@@ -458,7 +467,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/01/2020 11:05:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/02/2020 15:16:22</publishTime>
+      <publishTime>12/02/2020 16:35:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

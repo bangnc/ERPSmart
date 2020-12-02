@@ -1,0 +1,74 @@
+:host {
+    ::ng-deep {
+        .dropdown-menu {
+            padding: 0;
+            .date-picker {
+                ngb-datepicker {
+                    border: none;
+                    .ngb-dp-day,
+                    .ngb-dp-weekday,
+                    .ngb-dp-week-number {
+                        margin: 2px;
+                    }
+                    .ngb-dp-arrow {
+                        width: 0;
+                    }
+                    .ngb-dp-navigation-select {
+                        select {
+                            margin: 1px;
+                        }
+                    }
+                }
+            }
+            .time-picker {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                hr {
+                    margin-top: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                ngb-timepicker {
+                    margin-left: 5px;
+                    .ngb-tp {
+                        .btn.btn-link {
+                            padding: 2px;
+                            width: 100%;
+                            font-size: 12px;
+                            margin: 2px;
+                        }
+                        .form-control {
+                            padding: 0;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .picker-action {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    .btn {
+                        padding: 0.5rem 1rem;
+                    }
+                }
+            }
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+    .input-group-append {
+        position: absolute;
+        right: 0;
+        z-index: 12;
+        .input-group-text {
+            background: transparent;
+            font-size: 1.25rem;
+            border: none;
+            &:hover {
+                color: #4285f4;
+            }
+        }
+    }
+}

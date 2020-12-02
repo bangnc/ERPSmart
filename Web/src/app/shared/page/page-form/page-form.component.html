@@ -1,0 +1,75 @@
+<!-- <ng-container *ngIf="sideBarByModule$| async as sideBarByModule"> -->
+<header class="navbar navbar-dark primary-color double-nav">
+    <div class="float-left left">
+        <ul *ngIf="hasNavBack" class="nav navbar-nav nav-flex-icons ml-auto">
+            <li mdbWavesEffect class="nav-item" (click)="navigateBack()">
+                <a class="nav-link">
+                    <i class="mdi mdi-keyboard-backspace"></i>
+                </a>
+            </li>
+        </ul>
+        <ng-content select="[app-page-header-left]">
+        </ng-content>
+    </div>
+    <div class="m-auto middle">
+        <h5 class="text-white text-truncate">{{pageTitle}}</h5>
+    </div>
+
+    <div class="float-right right">
+        <ng-content select="[app-page-header-right]">
+        </ng-content>
+    </div>
+
+</header>
+<ng-container *ngIf="sideBar && sideBar.length>0">
+    <div class="page-sidebar">
+        <ul class="nav">
+            <!-- <li *ngFor="let item of sideBar; let i = index" class="nav-item" [routerLinkActive]="['active']"
+                    mdbWavesEffect [ngbTooltip]="item.ten" placement="right"> -->
+            <li *ngFor="let item of sideBar; let i = index" class="nav-item" [routerLinkActive]="['active']"
+                mdbWavesEffect>
+                <a class="nav-link" [routerLink]="item.duong_dan">
+                    <i [class]="item.icon||'mdi mdi-view-list'"></i>
+                    <span>{{item.ten}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <app-fabs [items]="sideBar" class="d-block d-sm-none"></app-fabs>
+</ng-container>
+<div class="page-content animated fadeIn">
+    <!--Sub header chứa action bar và filer bar-->
+    <div *ngIf="!noSubHeader" class="sub-header">
+        <div class="sub-header-left">
+            <ng-content select="[app-page-actions]">
+            </ng-content>
+        </div>
+        <!-- <div class="sub-header-right">
+        </div> -->
+    </div>
+    <div *ngIf="noSubHeader" class="no-sub-header">
+
+    </div>
+    <!--Phần hiển thị table list-->
+    <div class="form-content" (scroll)="divScroll($event)">
+        <ng-content select="[app-page-content]">
+        </ng-content>
+    </div>
+    <div *ngIf="loading" class="page-loading">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+</div>
+<!-- </ng-container> -->

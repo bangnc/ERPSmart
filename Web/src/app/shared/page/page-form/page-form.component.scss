@@ -1,0 +1,41 @@
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    .page-content{
+        display: flex;
+        flex: 1;
+        flex-direction: column; 
+        position: relative;
+        height: 100vh;
+    }
+    .form-content{
+        flex: 1;
+        overflow-y: auto;
+        background: #fff;
+        padding-bottom: 20px;
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 18px;
+        }
+        &::-webkit-scrollbar-button,
+        &::-webkit-scrollbar-corner {
+            background: #fff;
+            cursor: pointer;
+            display: none;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #c8c8c8;
+        }
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-thumb:hover {
+            border-radius: 6px;
+            border: solid 1px transparent;
+            background-clip: content-box;
+        }
+        &::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+    }
+
+}

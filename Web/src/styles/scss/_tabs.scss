@@ -1,0 +1,29 @@
+%active-tab {
+    border-color: transparent;
+    border-bottom-color: $primary-color;
+    border-bottom-width: 2px;
+}
+
+.nav-tabs {
+    .nav-item {
+        .nav-link {
+            &.active {
+                @extend %active-tab;
+                &:hover {
+                    @extend %active-tab;
+                }
+            }
+            &:hover {
+                border-color: transparent;
+            }
+        }
+        &.show {
+            .nav-link {
+                @extend %active-tab;
+                &:hover {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}

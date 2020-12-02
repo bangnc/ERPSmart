@@ -1,0 +1,18 @@
+:host {
+    ::ng-deep {
+        .tbl-body {
+            max-height: calc(100vh - 400px);
+            overflow-y: auto;
+        }
+        .md-form {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .tbl-warp {
+            margin-bottom: -15px;
+        }
+        .sub-header {
+            display: none;
+        }
+    }
+}

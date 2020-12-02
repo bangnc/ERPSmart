@@ -1,0 +1,14 @@
+
+
+:host{
+    ::ng-deep{
+        .custom-control-label{
+            position: relative;
+        }
+        .prefix ~ .custom-control{
+            &.custom-radio {
+                margin-left: 2.5rem;
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Pp28f9y1b2RFcVKlAtuh9JKS6mSPRBE0d4eXERpZv1suJMidkruOxSzStUnpK0wYuFWoxmAmiwfrTPqaUr/khA==",
+  "dgSpecHash": "y11OaPstlbf5ZQ5dWE0JDjGdJSMEh7veqDCRSV4A3R3zSKL5ozhYRCtWyj8K+NtOLzbrqK6gR8RxzVz8vCwHMQ==",
   "success": true,
-  "projectFilePath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+  "projectFilePath": "F:\\BangNC\\ChemGio\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BangNC\\.nuget\\packages\\entityframework\\6.1.2\\entityframework.6.1.2.nupkg.sha512",
     "C:\\Users\\BangNC\\.nuget\\packages\\fissoft.entityframework.fts\\1.0.80\\fissoft.entityframework.fts.1.0.80.nupkg.sha512",

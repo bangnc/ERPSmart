@@ -380,11 +380,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+      "projectUniqueName": "F:\\BangNC\\ChemGio\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
       "projectName": "ERP_SMART.Business",
-      "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
+      "projectPath": "F:\\BangNC\\ChemGio\\ERP_SMART.Business\\ERP_SMART.Business.csproj",
       "packagesPath": "C:\\Users\\BangNC\\.nuget\\packages\\",
-      "outputPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Business\\obj\\",
+      "outputPath": "F:\\BangNC\\ChemGio\\ERP_SMART.Business\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -401,8 +401,8 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj": {
-              "projectPath": "F:\\BangNC\\ERP_SMART\\ERP_SMART.Data\\ERP_SMART.Data.csproj"
+            "F:\\BangNC\\ChemGio\\ERP_SMART.Data\\ERP_SMART.Data.csproj": {
+              "projectPath": "F:\\BangNC\\ChemGio\\ERP_SMART.Data\\ERP_SMART.Data.csproj"
             }
           }
         }

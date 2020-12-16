@@ -39,10 +39,12 @@ keyExtractor="id"
     </ng-template>
     <!-- Phần config cho action bar -->
     <ng-template app-page-actions let-itemSelected>
-        <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT] && profile.tai_khoan_goc" (click)="create()">
+        <!-- <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT] && profile.tai_khoan_goc" (click)="create()"> -->
+        <button mdbWavesEffect class="btn btn-sm btn-primary" (click)="create()">
             <i class="mdi mdi-plus"></i>
             Thêm mới
         </button>
+        <!-- <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT]" (click)="syncUser()"> -->
         <button mdbWavesEffect class="btn btn-sm btn-primary" *ngIf="permission[perms.EDIT]" (click)="syncUser()">
             <i class="mdi mdi-plus"></i>
             Đồng bộ từ cổng

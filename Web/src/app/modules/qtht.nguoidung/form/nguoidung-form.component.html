@@ -1,8 +1,11 @@
+<!-- [noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"  -->
 <app-page-form *appPermission="true;let permission"
 [loading]="loading"  
-[noSubHeader]="!permission[perms.EDIT] && !permission[perms.DELETE]"   pageTitle="THÔNG TIN NGƯỜI DÙNG" (emitNavigateBack)="navigateBack($event)"  >
+
+  pageTitle="THÔNG TIN NGƯỜI DÙNG" (emitNavigateBack)="navigateBack($event)"  >
     <ng-container app-page-actions>
-        <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+        <!-- <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()"> -->
+            <button [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
                 <i class="mdi mdi-content-save"></i>
                 Lưu lại
             </button>
@@ -21,29 +24,30 @@
                 <div class="col-md-12">
                     <div class="row m-2">
                         <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="tai_khoan" type="text" title="Tên tài khoản (*)"
+                            <!-- [isEditable]="is_administrator" -->
+                            <app-input [isEditable]="editMode" name="tai_khoan" type="text" title="Tên tài khoản (*)"
                                 [(ngModel)]="data.tai_khoan" [validationMessages]="validationMessages.tai_khoan" required></app-input>
                         </div>
                         <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="mat_khau" type="password" title="Mật khẩu (*)"
+                            <app-input [isEditable]="editMode" name="mat_khau" type="password" title="Mật khẩu (*)"
                                 [(ngModel)]="data.mat_khau" [validationMessages]="validationMessages.mat_khau" required></app-input>
                         </div>
                         <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="ten" type="text" title="Họ và tên (*)" 
+                            <app-input [isEditable]="editMode" name="ten" type="text" title="Họ và tên (*)" 
                                 [(ngModel)]="data.ten" [validationMessages]="validationMessages.ten" required></app-input>
                         </div>
-                        <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="email" type="text" title="Thư điện tử"
+                        <!-- <div class="col-md-6">
+                            <app-input [isEditable]="editMode" name="email" type="text" title="Thư điện tử"
                                 [(ngModel)]="data.email"></app-input>
-                        </div>
-                        <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="to_chuc_id" type="select-server" title="Hội LHPN (*)" [(ngModel)]="data.to_chuc_id"  
+                        </div> -->
+                        <!-- <div class="col-md-6">
+                            <app-input [isEditable]="editMode" name="to_chuc_id" type="select-server" title="Hội LHPN (*)" [(ngModel)]="data.to_chuc_id"  
                                 [validationMessages]="validationMessages.to_chuc_id" required (ngModelChange)="chonToChuc($event)"
                                 [readModeData]="data.to_chuc" [options]="optionTC" (emitSearch)="searchTC()">   
                             </app-input>
                         </div>
                         <div class="col-md-6">
-                            <app-input [isEditable]="is_administrator" name="phong_ban_id" type="select" title="Phòng ban" [(ngModel)]="data.phong_ban_id"
+                            <app-input [isEditable]="editMode" name="phong_ban_id" type="select" title="Phòng ban" [(ngModel)]="data.phong_ban_id"
                                 [data]=PhongBans [readModeData]="data.phong_ban" [options]="{value:'id', label:'ten', multiple:false}">   
                             </app-input>
                         </div>
@@ -52,7 +56,7 @@
                                 [data]=Nhoms [readModeData]="data.ds_nhom" [options]="{value:'id', label:'ten', multiple:true}"
                                 [validationMessages]="validationMessages.ds_nhom_id" required>   
                             </app-input>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

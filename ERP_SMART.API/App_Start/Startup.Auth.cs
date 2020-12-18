@@ -10,6 +10,9 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ERP_SMART.API.Providers;
 using ERP_SMART.API.Models;
+using Microsoft.Owin.Cors;
+using System.Web.Cors;
+using System.Threading.Tasks;
 
 namespace ERP_SMART.API
 {
@@ -31,7 +34,22 @@ namespace ERP_SMART.API
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            var corsPolicy = new CorsPolicy
+            {
+                AllowAnyMethod = true,
+                AllowAnyHeader = true
+            };
+            corsPolicy.AllowAnyOrigin = true;
+            var corsOptions = new CorsOptions
+            {
+                PolicyProvider = new CorsPolicyProvider
+                {
+                    PolicyResolver = context => Task.FromResult(corsPolicy)
+                }
+            };
 
+            app.UseCors(corsOptions);
+            // app.UseCors(CorsOptions.AllowAll);
             // Configure the application for OAuth based flow
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions

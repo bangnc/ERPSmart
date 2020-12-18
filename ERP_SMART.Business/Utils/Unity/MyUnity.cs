@@ -1,4 +1,5 @@
 ﻿using ERP_SMART.Business.Services.System.User;
+using ERP_SMART.Business.Services.System.Module;
 using Fissoft.EntityFramework.Fts;
 using Unity;
 using Unity.Injection;
@@ -16,7 +17,8 @@ namespace ERP_SMART.Business.Utils.Unity
             container = new UnityContainer();
             #region quản lý danh muc dùng chung
             container.RegisterType<ISystemUserService, SystemUserService>(new InjectionConstructor());
-            
+            container.RegisterType<ISystemModuleService, SystemModuleService>(new InjectionConstructor());
+
             #endregion
             return container;
         }

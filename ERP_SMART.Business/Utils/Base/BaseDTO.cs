@@ -12,5 +12,6 @@ namespace ERP_SMART.Business.Utils.Base
         public System.DateTime UpdateDate { get; set; }
         public System.Guid CreateUserId { get; set; }
         public System.Guid UpdateUserId { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -19,9 +19,8 @@ namespace ERP_SMART.API
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             // my config
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);    
-            
+            //var cors = new EnableCorsAttribute("*", "*", "*");            
+            //config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
             MyUnity.RegisterService();

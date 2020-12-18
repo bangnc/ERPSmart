@@ -1,0 +1,44 @@
+<app-page-form *appPermission="true;let permission"
+[loading]="loading"  
+ pageTitle="THÔNG TIN MODULE" (emitNavigateBack)="navigateBack($event)"  >
+    <ng-container app-page-actions>
+        <button  [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+                <i class="mdi mdi-content-save"></i>
+                Lưu lại
+            </button>
+            <button  mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+                <i class="mdi mdi-pencil-box-outline"></i>
+                Sửa
+            </button>
+            <button  mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+                <i class="mdi mdi-delete-outline"></i>
+                Xóa
+            </button>
+    </ng-container>
+    <ng-container app-page-content>
+        <form action="" #positionlForm="ngForm">
+            <div class="row m-2">
+                <div class="col-md-12">
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <app-input [autofocus]="true" [isEditable]=editMode name="ModuleCode" type="text" title="Mã module (*)"
+                                [(ngModel)]="data.ModuleCode" [validationMessages]="validationMessages.ModuleCode" required></app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="ModuleName" type="text" title="Tên module (*)"
+                                [(ngModel)]="data.ModuleName" [validationMessages]="validationMessages.ModuleName" required></app-input>
+                        </div>                     
+                        
+                        <div class="col-md-6">
+                            <app-input [isEditable]=editMode name="Collocation" type="number" title="Số thứ tự"
+                                [(ngModel)]="data.Collocation"></app-input>
+                        </div>                       
+                        <div class="col-md-12">
+                            <app-input [isEditable]=editMode name="Description" type="textarea" title="Thông tin khác" [(ngModel)]="data.Description"></app-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</app-page-form>

@@ -23,7 +23,15 @@ const routes: Routes = [{
         //     loadChildren: '../modules/dm.khoidonvi/khoidonvi.module#KhoiDonViModule'
         // },       
         //#endregion
-
+        //#region  System
+        {
+          path: 'system-module',
+          data: { module: 'QTHT' },
+        //  canActivate: [AuthenticationModuleService],
+          loadChildren: '../modules/system.module/module.module#ModuleModule'
+      },
+        //#endregion
+        // -------------------------------------------------------------------------------------------------------------------
         //#region Router QTHT
         {
             path: 'qtht-loaimodule',

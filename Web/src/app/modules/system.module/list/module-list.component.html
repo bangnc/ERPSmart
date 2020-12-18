@@ -1,0 +1,67 @@
+<app-page-list
+*appPermission="true;let permission" 
+pageTitle="DANH SÁCH MODULE" 
+keyExtractor="id"  
+[data]="data"
+[meta]="meta"
+[pageOption]="pageOption"
+[loading]="loading" 
+(emitNavigateBack)="navigateBack($event)"
+(emitChange)="papeOptionChange($event)"
+(emitRowDbClick)="showDetail($event)">
+    <!-- Phần config cho filter bar -->
+    <ng-template app-page-filter let-itemSelected>
+        <form (ngSubmit)="filter()">
+            <div class="row m-2">
+                <div class="col-md-6">
+                    <app-input name="ModuleCode" [autofocus]="true"  type="text" title="Mã" [(ngModel)]="pageOption.filter.ModuleCode"></app-input>
+                </div>
+                <div class="col-md-6">
+                    <app-input name="ModuleName" type="text" title="Tên" [(ngModel)]="pageOption.filter.ModuleName"></app-input>
+                </div>
+                <button type="submit" style="display:none"></button>
+            </div>
+        </form>
+    </ng-template>
+    <!-- Phần config cho action bar -->
+    <ng-template app-page-actions let-itemSelected>
+        <button mdbWavesEffect class="btn btn-sm btn-primary"  (click)="create()">
+            <i class="mdi mdi-plus"></i>
+            Thêm mới
+        </button>
+        <button mdbWavesEffect class="btn btn-sm btn-danger"  (click)="deletes(itemSelected)">
+            <i class="mdi mdi-delete-outline"></i>
+            Xóa
+        </button>
+    </ng-template>
+    <!--Phần config cho table list-->
+    
+    <app-page-column title="STT" width="120px" orderby='Collocation'>
+        <ng-template col-body let-item>{{item.Collocation}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Mã" width="120px" orderby='ModuleCode'>
+        <ng-template col-body let-item>{{item.ModuleCode}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Tên" orderby='ModuleName'>
+        <ng-template col-body let-item>{{item.ModuleName}}</ng-template>
+    </app-page-column>
+    <app-page-column title="Thông tin khác" orderby='Description'>
+        <ng-template col-body let-item>{{item.Description}}</ng-template>
+    </app-page-column>
+    <app-page-column title="" class="col-action" width="100px">
+        <ng-template col-body let-item>
+            <ul class="nav nav-actions">
+                <li  class="action-icon nav-item" container="body" ngbTooltip="Thông tin chi tiết" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-info" (click)="showDetail(item)">
+                        <i class="mdi mdi-information-outline"></i>
+                    </a>
+                </li>
+                <li class="action-icon nav-item" container="body" ngbTooltip="Xóa" placement="bottom">
+                    <a mdbWavesEffect class="nav-link text-danger" (click)="delete(item)">
+                        <i class="mdi mdi-delete-outline"></i>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </app-page-column>
+</app-page-list>

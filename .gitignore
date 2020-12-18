@@ -1,0 +1,9 @@
+﻿/.vs/ERP_SMART/config/applicationhost.config
+/ERP_SMART.API/bin
+/.vs/ERP_SMART/v16/Server/sqlite3
+/.vs/ERP_SMART/v16/.suo
+/ERP_SMART.API/obj/Debug
+/ERP_SMART.Business/obj
+/ERP_SMART.Data/obj/Debug
+/packages
+/Web/node_modules

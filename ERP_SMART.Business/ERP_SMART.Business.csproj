@@ -46,11 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\System\Module\ISystemModuleService.cs" />
+    <Compile Include="Services\System\Module\SystemModuleDTO.cs" />
+    <Compile Include="Services\System\Module\SystemModuleService.cs" />
     <Compile Include="Services\System\User\ISystemUserService.cs" />
     <Compile Include="Services\System\User\SystemUserService.cs" />
     <Compile Include="Services\System\User\SystemUserDTO.cs" />
     <Compile Include="Utils\Base\BaseDTO.cs" />
     <Compile Include="Utils\Base\CatchError.cs" />
+    <Compile Include="Utils\Base\ResponseList.cs" />
     <Compile Include="Utils\EnDeCrypt\Cipher.cs" />
     <Compile Include="Utils\Unity\MyUnity.cs" />
   </ItemGroup>
@@ -61,8 +65,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>10.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Fissoft.EntityFramework.Fts">
       <Version>1.0.80</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Linq.Dynamic">
+      <Version>1.0.8</Version>
     </PackageReference>
     <PackageReference Include="Unity">
       <Version>5.11.9</Version>

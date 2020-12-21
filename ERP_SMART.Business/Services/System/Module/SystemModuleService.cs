@@ -274,6 +274,11 @@ namespace ERP_SMART.Business.Services.System.Module
                 return false;
             }
         }
+        /// <summary>
+        /// Xóa nhiều
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
         public bool Removes(List<Guid> ids)
         {
             try

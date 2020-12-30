@@ -19,7 +19,23 @@ namespace ERP_SMART.API.Controllers
         {
             userService = MyUnity.GetService<ISystemUserService>();
         }
-
+        [HttpGet]
+        [Route("")]
+        public HttpResponseMessage Get(int page = 1, int page_size = 0, string sort = null, string filter = null, string search = null)
+        {
+            try
+            {
+                var result = userService.GetMany(page, page_size, sort, filter, search);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, result);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var err = new CatchError(ex);
+                HttpResponseMessage response = Request.CreateResponse(err.status, err);
+                return response;
+            }
+        }
         // POST api/Account/Register; Sử dụng git
         [AllowAnonymous]
         [Route("Register")]
@@ -99,6 +115,7 @@ namespace ERP_SMART.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpDelete]
         [Route("{id}")]
         public HttpResponseMessage Remove(Guid id)

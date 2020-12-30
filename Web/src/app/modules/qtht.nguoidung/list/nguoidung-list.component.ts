@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 export class NguoiDungListComponent implements OnInit {
 
   data: Array<any>;
-  url = 'api/qtht-nguoidung';
+  url = 'api/SystemUser';
   urlPhongBan = 'api/tc-phongban';
   urlToChuc = 'api/tc-tochuc?output_type=dm';
   meta: MetaStruct;
@@ -66,6 +66,7 @@ export class NguoiDungListComponent implements OnInit {
   ngOnInit(): void {
     this.pageOption.filter = {};
     this.pageOption.search = '';
+    this.pageOption.sort = { FullName: 1 };
     this.commonService.initPageOption(this.router.url, (pageOption) => {
       this.pageOption = pageOption || this.pageOption;
       this.getMany();
@@ -146,7 +147,7 @@ export class NguoiDungListComponent implements OnInit {
       type: 'danger'
     })) {
       this.loading = true;
-      this.commonService.del(this.url, item.id).subscribe(
+      this.commonService.del(this.url, item.UserId).subscribe(
         res => {
           this.getMany();
         },

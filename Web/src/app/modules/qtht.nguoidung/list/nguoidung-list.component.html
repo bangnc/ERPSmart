@@ -14,7 +14,7 @@ keyExtractor="id"
     <ng-template app-page-filter let-itemSelected>
         <form (ngSubmit)="filter()">
             <div class="row m-2">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <app-input name="to_chuc_id" type="select-server" title="Hội" [(ngModel)]="pageOption.filter.to_chuc_id"  
                         [options]="optionTC" (emitSearch)="searchTC()" (ngModelChange)="changeHoi()">   
                     </app-input>
@@ -23,15 +23,15 @@ keyExtractor="id"
                     <app-input name="phong_ban_id" type="select-server" title="Ban, phòng" [(ngModel)]="pageOption.filter.phong_ban_id"  
                         [options]="optionPhongBanByHoi" (emitSearch)="optionTC()">   
                     </app-input>
+                </div> -->
+                <div class="col-md-4">
+                    <app-input name="tai_khoan" [autofocus]="true" type="text" title="Tên tài khoản" [(ngModel)]="pageOption.filter.FullName"></app-input>
                 </div>
                 <div class="col-md-4">
-                    <app-input name="tai_khoan" [autofocus]="true" type="text" title="Tên tài khoản" [(ngModel)]="pageOption.filter.tai_khoan"></app-input>
+                    <app-input name="ten" type="text" title="Họ và tên" [(ngModel)]="pageOption.filter.FullName"></app-input>
                 </div>
                 <div class="col-md-4">
-                    <app-input name="ten" type="text" title="Họ và tên" [(ngModel)]="pageOption.filter.ten"></app-input>
-                </div>
-                <div class="col-md-4">
-                    <app-input name="email" type="text" title="Thư điện tử" [(ngModel)]="pageOption.filter.email"></app-input>
+                    <app-input name="email" type="text" title="Thư điện tử" [(ngModel)]="pageOption.filter.Email"></app-input>
                 </div>
                 <button type="submit" style="display:none"></button>
             </div>
@@ -58,14 +58,14 @@ keyExtractor="id"
     <app-page-column title="STT" width="60px" class="justify-content-center"class="d-none d-sm-flex">
         <ng-template col-body let-index=index>{{idx + index}}</ng-template>
     </app-page-column>
-    <app-page-column title="Tên tài khoản" orderby='tai_khoan'>
-        <ng-template col-body let-item>{{item.tai_khoan}}</ng-template>
+    <app-page-column title="Tài khoản" orderby='UserName'>
+        <ng-template col-body let-item>{{item.UserName}}</ng-template>
     </app-page-column>
-    <app-page-column title="Hội" orderby='to_chuc.ten'>
-        <ng-template col-body let-item>{{item.to_chuc !== null ? item.to_chuc.ten : ''}}</ng-template>
+    <app-page-column title="Họ và tên" orderby='FullName'>
+        <ng-template col-body let-item>{{item.FullName}}</ng-template>
     </app-page-column>
-    <app-page-column title="Trạng thái" orderby='ten_trang_thai'>
-        <ng-template col-body let-item>{{item.ten_trang_thai}}</ng-template>
+    <app-page-column title="Email" orderby='Email'>
+        <ng-template col-body let-item>{{item.Email}}</ng-template>
     </app-page-column>
     <app-page-column title="" class="col-action" width="100px">
         <ng-template col-body let-item>
@@ -75,11 +75,11 @@ keyExtractor="id"
                         <i class="mdi mdi-information-outline"></i>
                     </a>
                 </li>
-                <!-- <li class="action-icon nav-item" *ngIf="permission[perms.DELETE]" container="body" ngbTooltip="Xóa" placement="bottom">
+                <li class="action-icon nav-item" container="body" ngbTooltip="Xóa" placement="bottom">
                     <a mdbWavesEffect class="nav-link text-danger" (click)="delete(item)">
                         <i class="mdi mdi-delete-outline"></i>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </ng-template>
     </app-page-column>

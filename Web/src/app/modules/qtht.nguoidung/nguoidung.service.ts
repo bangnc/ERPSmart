@@ -26,7 +26,6 @@ export class NguoiDungService {
         return this.http.put<any>(this.url + '/Update/' + id, obj);
     }
     del(id: string): Observable<any> {
-        debugger
         return this.http.delete<any>(this.url + '/' + id);
     }
     dels(listId: Array<string>): Observable<any> {

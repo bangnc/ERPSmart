@@ -40,7 +40,7 @@ namespace ERP_SMART.API.Controllers
         }
         [AllowAnonymous]
         [HttpPut]
-        [Route("{id}")]
+        [Route("Update/{id}")]
         public HttpResponseMessage Update(SystemUserDTO obj, Guid id)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -93,6 +93,30 @@ namespace ERP_SMART.API.Controllers
             }
             return response;
         }
+        #region remove
+        /// <summary>
+        /// Xóa 1 QTHT - Cấu hình hệ thống
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("{id}")]
+        public HttpResponseMessage Remove(Guid id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var result = userService.Remove(id);
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                var err = new CatchError(ex);
+                response = Request.CreateResponse(err.status, err);
+            }
+            return response;
+        }
+        #endregion
 
     }
 }

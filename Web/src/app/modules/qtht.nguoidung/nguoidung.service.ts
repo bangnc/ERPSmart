@@ -23,9 +23,10 @@ export class NguoiDungService {
         return this.http.post<any>(this.url + '/Register', obj);
     }
     update(obj: NguoiDung, id: string): Observable<NguoiDung> {
-        return this.http.put<any>(this.url + '/' + id, obj);
+        return this.http.put<any>(this.url + '/Update/' + id, obj);
     }
     del(id: string): Observable<any> {
+        debugger
         return this.http.delete<any>(this.url + '/' + id);
     }
     dels(listId: Array<string>): Observable<any> {

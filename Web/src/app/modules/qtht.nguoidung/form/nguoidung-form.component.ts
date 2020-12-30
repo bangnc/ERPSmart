@@ -121,11 +121,11 @@ export class NguoiDungFormComponent implements OnInit {
 
   update() {
     this.editMode = true;
-    this.getDanhMuc();
+   // this.getDanhMuc();
   }
 
   delete() {
-    this._delete(this.data.id);
+    this._delete(this.data.UserId);
   }
 
   getDanhMuc() {

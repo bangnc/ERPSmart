@@ -34,15 +34,15 @@ export class NguoiDungFormComponent implements OnInit {
   };
 
   validationMessages = {
-    'ten':
+    'FullName':
     {
       'required': 'Nhập thông tin họ và tên.'
     },
-    'tai_khoan':
+    'UserName':
     {
       'required': 'Nhập thông tin tên tài khoản.'
     },
-    'mat_khau':
+    'Password':
     {
       'required': 'Nhập thông tin mật khẩu.'
     },
@@ -53,6 +53,10 @@ export class NguoiDungFormComponent implements OnInit {
     'ds_nhom_id':
     {
       'required': 'Nhập thông tin nhóm người dùng.'
+    },
+    'Email':
+    {
+      'required': 'Nhập email người dùng.'
     }
   };
   @ViewChild('positionlForm') positionlForm: NgForm;
@@ -69,8 +73,9 @@ export class NguoiDungFormComponent implements OnInit {
       .pipe(
         select((state: any) => state.oauthReducer.profile),
         map(profile => {
-          if (profile.tai_khoan_goc)
+          if (profile.tai_khoan_goc) {
             this.is_administrator = true;
+          }
         })
       )
       .subscribe();
@@ -140,7 +145,7 @@ export class NguoiDungFormComponent implements OnInit {
       this.service.create(obj).subscribe(
         res => {
           this.loading = false;
-          this.router.navigate(['/qtht-nguoidung/form/' + res.id], { replaceUrl: true });
+          this.router.navigate(['/qtht-nguoidung/form/' + res.UserId], { replaceUrl: true });
           this.editMode = false;
         },
         err => {

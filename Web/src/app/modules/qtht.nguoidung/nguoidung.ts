@@ -22,4 +22,5 @@ export class NguoiDung {
     ds_nhom: any;
     ds_nhom_id: any;
     ten_trang_thai: string;
+    UserId: string;
 }

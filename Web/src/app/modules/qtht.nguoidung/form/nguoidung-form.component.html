@@ -5,18 +5,18 @@
   pageTitle="THÔNG TIN NGƯỜI DÙNG" (emitNavigateBack)="navigateBack($event)"  >
     <ng-container app-page-actions>
         <!-- <button *ngIf="permission[perms.EDIT] && editMode" [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()"> -->
-            <button [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
+            <button *ngIf="editMode"  [disabled]="!positionlForm.form.valid" mdbWavesEffect class="btn btn-sm btn-primary" (click)="save()">
                 <i class="mdi mdi-content-save"></i>
                 Lưu lại
             </button>
-            <button *ngIf="permission[perms.EDIT] && !editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
+            <button *ngIf="!editMode" mdbWavesEffect class="btn btn-sm btn-warning" (click)="update()">
                 <i class="mdi mdi-pencil-box-outline"></i>
                 Sửa
             </button>
-            <!-- <button *ngIf="permission[perms.DELETE] && !editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
+            <button *ngIf="!editMode" mdbWavesEffect class="btn btn-sm btn-danger" (click)="delete()">
                 <i class="mdi mdi-delete-outline"></i>
                 Xóa
-            </button> -->
+            </button>
     </ng-container>
     <ng-container app-page-content>
         <form action="" #positionlForm="ngForm" autocomplete="off">
@@ -25,21 +25,21 @@
                     <div class="row m-2">
                         <div class="col-md-6">
                             <!-- [isEditable]="is_administrator" -->
-                            <app-input [isEditable]="editMode" name="tai_khoan" type="text" title="Tên tài khoản (*)"
-                                [(ngModel)]="data.tai_khoan" [validationMessages]="validationMessages.tai_khoan" required></app-input>
+                            <app-input [isEditable]="editMode" name="UserName" type="text" title="Tên tài khoản (*)"
+                                [(ngModel)]="data.UserName" [validationMessages]="validationMessages.UserName" required></app-input>
                         </div>
                         <div class="col-md-6">
-                            <app-input [isEditable]="editMode" name="mat_khau" type="password" title="Mật khẩu (*)"
-                                [(ngModel)]="data.mat_khau" [validationMessages]="validationMessages.mat_khau" required></app-input>
+                            <app-input [isEditable]="editMode" name="Password" type="password" title="Mật khẩu (*)"
+                                [(ngModel)]="data.Password" [validationMessages]="validationMessages.Password" required></app-input>
                         </div>
                         <div class="col-md-6">
-                            <app-input [isEditable]="editMode" name="ten" type="text" title="Họ và tên (*)" 
-                                [(ngModel)]="data.ten" [validationMessages]="validationMessages.ten" required></app-input>
+                            <app-input [isEditable]="editMode" name="FullName" type="text" title="Họ và tên (*)" 
+                                [(ngModel)]="data.FullName" [validationMessages]="validationMessages.FullName" required></app-input>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <app-input [isEditable]="editMode" name="email" type="text" title="Thư điện tử"
-                                [(ngModel)]="data.email"></app-input>
-                        </div> -->
+                        <div class="col-md-6">
+                            <app-input [isEditable]="editMode" name="Email" type="text" title="Email"
+                                [(ngModel)]="data.Email" [validationMessages]="validationMessages.Email" required></app-input>
+                        </div>
                         <!-- <div class="col-md-6">
                             <app-input [isEditable]="editMode" name="to_chuc_id" type="select-server" title="Hội LHPN (*)" [(ngModel)]="data.to_chuc_id"  
                                 [validationMessages]="validationMessages.to_chuc_id" required (ngModelChange)="chonToChuc($event)"

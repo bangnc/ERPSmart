@@ -7,7 +7,7 @@ import { CommonService } from '../../shared';
 export class NguoiDungService {
 
     constructor(private http: HttpClient, private commonService: CommonService) { }
-    private url = 'api/User';
+    private url = 'api/SystemUser';
     public codeModule = 'sys.module';
     public codeObj = 'NguoiDung';
 
@@ -20,7 +20,7 @@ export class NguoiDungService {
         return this.http.get<any>(this.url + '/' + id);
     }
     create(obj: Object): Observable<NguoiDung> {
-        return this.http.post<any>(this.url + '/InserUser', obj);
+        return this.http.post<any>(this.url + '/Register', obj);
     }
     update(obj: NguoiDung, id: string): Observable<NguoiDung> {
         return this.http.put<any>(this.url + '/' + id, obj);

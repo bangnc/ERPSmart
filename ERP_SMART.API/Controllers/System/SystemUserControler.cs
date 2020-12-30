@@ -38,6 +38,43 @@ namespace ERP_SMART.API.Controllers
             }
             return response;
         }
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("{id}")]
+        public HttpResponseMessage Update(SystemUserDTO obj, Guid id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var result = userService.Update(obj, id);
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                var err = new CatchError(ex);
+                response = Request.CreateResponse(err.status, err);
+            }
+            return response;
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("{id}")]
+        public HttpResponseMessage GetById(Guid id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var result = userService.GetById(id);
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                var err = new CatchError(ex);
+                response = Request.CreateResponse(err.status, err);
+            }
+            return response;
+        }
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Login")]

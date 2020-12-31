@@ -24,7 +24,7 @@ namespace ERP_SMART.API.Controllers
             moduleService = MyUnity.GetService<ISystemModuleService>();
         }
 
-        // POST api/Account/Register; Sử dụng git abc
+        // POST api/Account/Register; Sử dụng git
         [HttpPost]
         [Route("")]
         public HttpResponseMessage Insert(SystemModuleDTO obj)

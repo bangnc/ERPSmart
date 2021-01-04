@@ -137,7 +137,7 @@ export class NguoiDungListComponent implements OnInit {
   }
 
   showDetail(item) {
-    this.router.navigateByUrl('qtht-nguoidung/form/' + item.id);
+    this.router.navigateByUrl('qtht-nguoidung/form/' + item.UserId);
   }
 
   async delete(item) {

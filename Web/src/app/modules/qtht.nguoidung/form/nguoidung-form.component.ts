@@ -127,7 +127,9 @@ export class NguoiDungFormComponent implements OnInit {
   delete() {
     this._delete(this.data.UserId);
   }
-
+  close() {
+    this.router.navigate(['/qtht-nguoidung/list'], { replaceUrl: true });
+  }
   getDanhMuc() {
     // this._getToChuc();
     this._getPhongBan();

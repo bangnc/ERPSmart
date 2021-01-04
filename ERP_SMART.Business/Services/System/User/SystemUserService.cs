@@ -182,24 +182,24 @@ namespace ERP_SMART.Business.Services.System.User
         {
             if (filter != null)
             {
-                String userName = filter.Description;
+                String userName = filter.UserName;
                 if (userName != null && userName != "")
                 {
                     userName = userName.ToLower();
                     query = query.Where(x => x.UserName.ToLower().Contains(userName));
                 }
-                //String Description = filter.Description;
-                //if (Description != null && Description != "")
-                //{
-                //    Description = Description.ToLower();
-                //    query = query.Where(x => x.Description.ToLower().Contains(Description));
-                //}
-                //String ModuleCode = filter.ModuleCode;
-                //if (ModuleCode != null && ModuleCode != "")
-                //{
-                //    ModuleCode = ModuleCode.ToLower();
-                //    query = query.Where(x => x.ModuleCode.ToLower().Contains(ModuleCode));
-                //}
+                String fullName = filter.FullName;
+                if (fullName != null && fullName != "")
+                {
+                    fullName = fullName.ToLower();
+                    query = query.Where(x => x.FullName.ToLower().Contains(fullName));
+                }
+                String email = filter.Email;
+                if (email != null && email != "")
+                {
+                    email = email.ToLower();
+                    query = query.Where(x => x.Email.ToLower().Contains(email));
+                }
             }
             return query;
         }
